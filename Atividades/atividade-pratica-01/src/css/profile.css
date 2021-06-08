@@ -1,0 +1,18 @@
+#main {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+
+  height: 90vh;
+}
+
+img#profile {
+  width: 400px;
+  height: 230px;
+  border-radius: 16px;
+}
+
+tbody {
+  text-align: center;
+}

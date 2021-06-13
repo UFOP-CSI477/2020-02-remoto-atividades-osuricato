@@ -7,7 +7,6 @@
 body {
   background: #F0F0F5;
   -webkit-font-smoothing: antialiased;
-  color: var(--text-color);
 }
 
 body, input, button {
@@ -15,7 +14,6 @@ body, input, button {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: var(--title-color);
   font-family: Ubuntu;
 }
 
@@ -39,6 +37,6 @@ h1, h2, h3, h4, h5, h6 {
 
 .menu #links li a {
   padding-right: 24px;
-
+  color: white;
   text-decoration: none;
 }

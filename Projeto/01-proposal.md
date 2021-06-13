@@ -1,5 +1,5 @@
 # **CSI606-2020-02 - Remoto - Proposta de Trabalho Final**
-## *Aluna(o): Princesa Leia (Luke Skywalker)*
+## *Aluna(o): Samuel de Souza Gomes*
 
 --------------
 
@@ -12,7 +12,7 @@
 <!-- Apresentar o tema. -->
 ### 1. Tema
 
-  O trabalho final tem como tema o desenvolvimento de ...
+  O trabalho final tem como tema o desenvolvimento de um site para adoção de pets.
 
 <!-- Descrever e limitar o escopo da aplicação. -->
 ### 2. Escopo

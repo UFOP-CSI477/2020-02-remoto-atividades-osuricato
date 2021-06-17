@@ -12,7 +12,7 @@
 <!-- Apresentar o tema. -->
 ### 1. Tema
 
-  O trabalho final tem como tema o desenvolvimento de um site para adoção de pets.
+  O trabalho final tem como tema o desenvolvimento de um site para cadastro e listagem de casas de adoção de pets.
 
 <!-- Descrever e limitar o escopo da aplicação. -->
 ### 2. Escopo

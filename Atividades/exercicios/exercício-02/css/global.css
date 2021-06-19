@@ -40,3 +40,38 @@ h1, h2, h3, h4, h5, h6 {
   color: white;
   text-decoration: none;
 }
+
+table {
+  width: 50%;
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px;
+}
+
+th {
+  font-size: 14pt;
+  font-family: Tahoma;
+  font-style: italic;
+}
+
+thead tr:hover {
+  background-color: #9797dd;
+}
+
+tbody tr:hover {
+  background-color: #a9a9a9;
+}
+
+tfoot tr:hover {
+  background-color: #9797dd;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #b38f8f;
+}

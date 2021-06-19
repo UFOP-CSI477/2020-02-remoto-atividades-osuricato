@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/register.css">
+
+  <title>Sistema de BD - Cadastro</title>
+</head>
+<body>
+  <div class="container">
+    <header class="menu">
+      <ul id="links">
+        <li> <a href="home.html">Início</a> </li>
+        <li> <a href="states.html">Estados</a> </li>
+        <li> <a href="cities.html">Cidades</a> </li>
+        <li> <a href="products.html">Produtos</a> </li>
+        <li> <a href="people.html">Pessoas</a> </li>
+        <li> <a href="purchases.html">Compras</a> </li>
+        <li> <a href="report.html">Relatório</a> </li>
+        <li> <a href="register.html">Cadastro</a> </li>
+        <li> <a href="profile.html">Perfil</a> </li>
+        <li> <a href="exit.html">Sair</a> </li>
+      </ul>
+    </header>
+
+    <main id="main">
+      <h1>Cadastre um usuário</h1>
+
+      <div id="form">
+        <form id="form" action="" method="post">
+
+            <div class="fields">
+              <label for="name">Nome:</label>
+              <input type="text" class="input" name="name" id="name" placeholder="Digite seu nome">
+            </div>
+    
+            <div class="fields">
+              <label for="email">Email:</label>
+              <input type="email" class="input" name="email" id="email" placeholder="Digite seu email">
+            </div>
+
+            <div class="fields">
+              <label for="username">Nome de usuário:</label>
+              <input type="text" class="input" name="username" id="username" placeholder="Digite seu nome de usuário">
+            </div>
+
+            <div class="fields">
+              <label for="phone">Telefone:</label>
+              <input type="tel" class="input" name="phone" id="phone" placeholder="Digite seu nome telefone">
+            </div>
+    
+            <div class="fields">
+              <label for="senha">Senha:</label>
+              <input type="password" class="input" name="senha" id="senha" placeholder="Digite seu senha">
+            </div>
+
+            <div id="buttons">
+              <button id="register" type="submit">Cadastrar</button>
+              <button id="cancel" type="reset">Cancelar</button>
+            </div>
+
+          </form>
+        </div>
+
+    </main>
+  </div>
+</body>
+</html>

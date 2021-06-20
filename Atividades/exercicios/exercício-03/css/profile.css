@@ -1,0 +1,17 @@
+#main {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+
+  height: 90vh;
+}
+
+img#profile {
+  width: 20%;
+  border-radius: 50%;
+}
+
+tbody {
+  text-align: center;
+}

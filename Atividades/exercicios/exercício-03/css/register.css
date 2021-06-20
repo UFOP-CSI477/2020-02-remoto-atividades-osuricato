@@ -1,44 +1,18 @@
-#main {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  flex-direction: column;
-
-  height: 85vh;
-}
-
 #main #form {
   background-color: #e1e1e4;
 
   width: 400px;
-  height: 450px;
+  height: 500px;
 
   border-radius: 8px;
 
   display: flex;
   align-items: center;
-  flex-direction: column;
   justify-content: center;
 }
 
 #main .fields {
-  display: flex;
-  flex-direction: column;
-
   margin-bottom: 16px;
-}
-
-#main .input {
-  border: none;
-
-  width: 250px;
-  height: 35px;
-
-  border-radius: 4px;
-  margin-top: 4px;
-  padding-left: 8px;
-
-  font-size: 16px;
 }
 
 #main #buttons {
@@ -46,35 +20,13 @@
   flex-direction: row;
   justify-content: space-between;
 
-  width: 250px;
-}
-
-#main #buttons button {
-  width: 100px;
-  height: 35px;
-  font-size: 16px;
-  font-weight: bold;
-
-  border-radius: 4px;
-
-  cursor: pointer;
-  outline: none;
-  color: #fff;
-  border: none;
-}
-
-#main #buttons #register {
-  background-color: #04AA6D;
+  width: 200px;
 }
 
 #main #buttons #register:hover {
-  background-color: #3e8e41
-}
-
-#main #buttons #cancel {
-  background-color: #f4511e;
+  background-color: #092180
 }
 
 #main #buttons #cancel:hover {
-  background-color: #d34114
+  background-color: #c4210e
 }

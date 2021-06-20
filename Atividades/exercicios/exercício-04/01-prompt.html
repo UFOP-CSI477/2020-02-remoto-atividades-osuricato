@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atividade 1 JS</title>
+
+  <script>
+    'use strict'
+
+    function loadData() {
+      const name = window.prompt('Digite seu nome:')
+      const age = window.prompt('Digite sua idade:')
+      const address = window.prompt('Digite seu endereço:')
+
+      document.getElementById("name").innerHTML = name
+      document.getElementById("age").innerHTML = age
+      document.getElementById("address").innerHTML = address
+    }
+  </script>
+</head>
+
+<body>
+  
+  <div id="name"></div>
+  <div id="age"></div>
+  <div id="address"></div>
+
+  <input type="button" value="Carregar" onclick="loadData()">
+
+</body>
+</html>

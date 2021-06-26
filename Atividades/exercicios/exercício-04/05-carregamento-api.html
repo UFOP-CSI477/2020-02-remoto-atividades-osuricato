@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atividade 5 JS</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #F0F0F5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body,
+    input,
+    input {
+      font-family: Roboto, Arial, Helvetica, sans-serif;
+    }
+
+    form {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      flex-direction: column;
+
+      width: 90vw;
+      height: 100vh;
+    }
+
+    main {
+      display: flex;
+      justify-content: space-evenly;
+
+      width: 60vw;
+    }
+
+    input {
+      width: 200px;
+      height: 30px;
+      font-size: 16px;
+      font-weight: bold;
+
+      border-radius: 4px;
+
+      cursor: pointer;
+      outline: none;
+      border: none;
+
+      color: #fff;
+      background-color: #04AA6D;
+
+      margin-bottom: 32px;
+    }
+
+    select {
+      width: 200px;
+      height: 30px;
+
+      border-radius: 4px;
+      font-size: 16px;
+    }
+  </style>
+
+  
+</head>
+<body>
+  
+  <form>
+
+    <h1>Carregamento API IBGE</h1>
+
+    <main>
+      <input type="button" value="Carregar estados" onclick="carregarEstados()">
+
+      <select name="estados" id="estados" onchange="carregarCidades()">
+        <option value="">Selecione o estado:</option>
+      </select>
+  
+      <select name="cidades" id="cidades">
+        <option value="">Selecione a cidade:</option>
+      </select>
+    </main>
+
+  </form>
+
+  <script>
+
+    function limparSelect(campo) {
+      while(campo.length > 1) {
+        campo.remove(1)
+      }
+    }
+
+    function preencherSelectEstados(data) {
+      let estados = document.getElementById("estados")
+      limparSelect(estados)
+
+      for(let index in data) {
+        const { id, nome, sigla } = data[index]
+
+        let option = document.createElement('option')
+
+        option.value = id
+        option.innerHTML = `${nome} - ${sigla}`
+
+        estados.appendChild(option)
+      }
+    }
+
+    function preencherSelectCidades(data) {
+      let cidades = document.getElementById("cidades")
+      limparSelect(cidades)
+
+      for(let index in data) {
+        const { id, nome } = data[index]
+
+        let option = document.createElement('option')
+
+        option.value = id
+        option.innerHTML = nome
+
+        cidades.appendChild(option)
+      }
+    }
+
+    function carregarEstados() {
+      fetch('https://servicodados.ibge.gov.br/api/v1/localidades/estados')
+        .then(response => response.json())
+        .then(data => preencherSelectEstados(data))
+        .catch(error => console.log(error))
+    }
+
+    function carregarCidades() {
+      const estados = document.getElementById("estados")
+      const estado_index = estados.selectedIndex
+      const estado_id = estados.options[ estado_index ].value
+
+      console.log(estado_id)
+
+      const cidades = document.getElementById("cidades")
+      limparSelect(cidades)
+
+      if (estado_id == "") {
+        return
+      }
+
+      fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${estado_id}/municipios`)
+        .then(response => response.json())
+        .then(data => preencherSelectCidades(data))
+        .catch(error => console.log(error))
+    }
+
+  </script>
+
+</body>
+</html>

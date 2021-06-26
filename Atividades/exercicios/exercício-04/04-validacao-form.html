@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atividade 4 JS - Validação</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #F0F0F5;
+      -webkit-font-smoothing: antialiased;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+
+      width: 90vw;
+      height: 100vh;
+    }
+
+    body,
+    input,
+    button {
+      font-family: Roboto, Arial, Helvetica, sans-serif;
+    }
+
+    #form .inputs {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 16px;
+    }
+
+    button {
+      width: 200px;
+      height: 30px;
+      font-size: 16px;
+      font-weight: bold;
+
+      border-radius: 4px;
+
+      cursor: pointer;
+      outline: none;
+      border: none;
+
+      color: #fff;
+      background-color: #04AA6D;
+
+      margin-bottom: 32px;
+    }
+
+    table {
+      width: 50%;
+    }
+
+    table,
+    th,
+    td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 10px;
+    }
+
+    th {
+      font-size: 14pt;
+      font-family: Tahoma;
+      font-style: italic;
+    }
+  </style>
+
+  <script>
+    'use strict'
+
+    function validarString(campo) {
+      let valor = campo.value
+
+      if (valor.length == 0 || !isNaN(Number(valor))) {
+        window.alert("Preencha os campos corretamente!")
+        campo.value = ""
+        return false
+      }
+
+      return true
+    }
+
+    function validarNumber(campo) {
+      let valor = campo.value
+
+      if (valor.length === 0 || isNaN(valor)) {
+        window.alert("Preencha os campos corretamente!")
+        campo.value = ""
+        return false
+      }
+
+      return true
+    }
+
+    function Pessoa(nome, sobrenome, cpf, rg) {
+      this.nome = nome
+      this.sobrenome = sobrenome
+      this.cpf = cpf
+      this.rg = rg
+    }
+
+    function loadDataForm() {
+      const nome = document.formData.nome
+      const sobrenome = document.formData.sobrenome
+      const cpf = document.formData.cpf
+      const rg = document.formData.rg
+
+      const pessoa = new Pessoa(nome, sobrenome, cpf, rg)
+      console.log(pessoa)
+
+      if (validarString(nome) && validarString(sobrenome) && validarNumber(cpf) && validarNumber(rg)) {
+        window.alert('Dados carregados com sucesso!')
+
+        document.getElementById("tableNome").innerHTML = nome.value
+        document.getElementById("tableSobrenome").innerHTML = sobrenome.value
+        document.getElementById("tableCPF").innerHTML = cpf.value
+        document.getElementById("tableRG").innerHTML = rg.value
+
+        document.getElementById('printData').removeAttribute("style")
+      }
+    }
+
+  </script>
+</head>
+
+<body>
+
+  <div id="form">
+
+    <form action="post" name="formData">
+
+      <div class="inputs">
+        <label for="nome">Nome</label>
+        <input type="text" name="nome" id="nome" value="">
+      </div>
+
+      <div class="inputs">
+        <label for="sobrenome">Sobrenome</label>
+        <input type="text" name="sobrenome" id="sobrenome" value="">
+      </div>
+
+      <div class="inputs">
+        <label for="cpf">CPF</label>
+        <input type="text" name="cpf" id="cpf" value="">
+      </div>
+
+      <div class="inputs">
+        <label for="rg">RG</label>
+        <input type="text" name="rg" id="rg" value="">
+      </div>
+
+    </form>
+
+    <button onclick="loadDataForm()">Carregar do Formulário</button>
+  </div>
+
+  <div id="printData" style="display: none">
+    <table>
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Sobrenome</th>
+          <th>CPF</th>
+          <th>RG</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td id="tableNome"></td>
+          <td id="tableSobrenome"></td>
+          <td id="tableCPF"></td>
+          <td id="tableRG"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atividade 3 JS</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #F0F0F5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body,
+    input,
+    button {
+      font-family: Roboto, Arial, Helvetica, sans-serif;
+    }
+
+    main {
+      width: 90vw;
+      height: 100vh;
+      
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+
+    button {
+      width: 200px;
+      height: 30px;
+      font-size: 16px;
+      font-weight: bold;
+
+      border-radius: 4px;
+
+      cursor: pointer;
+      outline: none;
+      border: none;
+
+      color: #fff;
+
+      margin-bottom: 32px;
+    }
+
+    #contador {
+      margin-bottom: 64px;
+
+      font-size: 32px;
+    }
+
+    #btnIniciar {
+      background-color: #04AA6D;
+    }
+
+    #btnParar {
+      background-color: #f20505;
+    }
+
+    #btnReiniciar {
+      background-color: #0754e2;
+    }
+
+  </style>
+
+  <script>
+    'use strict'
+
+    let contador = 0;
+    let id;
+    let executando = false;
+
+    function processo() {
+      document.getElementById("contador").innerHTML = `Contador = ${contador}`
+      contador++
+    }
+
+    function inciar() {
+      if(!executando) {
+        id = setInterval(processo)
+        executando = true;
+      }
+    }
+
+    function parar() {
+      clearInterval(id)
+      executando = false
+    }
+
+    function reiniciar() {
+      parar();
+      contador = 1;
+      document.getElementById("contador").innerHTML = "";
+    }
+
+  </script>
+</head>
+
+<body>
+
+  <main>
+
+    <div id="contador"></div>
+
+    <div id="buttons">
+      <button id="btnIniciar" onclick="inciar()">Iniciar</button>
+      <button id="btnParar" onclick="parar()">Parar</button>
+      <button id="btnReiniciar" onclick="reiniciar()">Reiniciar</button>
+    </div>
+    
+  </main>
+
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Competição de Carrinhos</title>
+
+  <script src="01-corrida.js"></script>
+  <link rel="stylesheet" href="01-corrida.css">
+
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="data">
+
+      <form action="post">
+
+        <div class="inputs">
+          <label for="start">Largada *</label>
+          <input type="number" max="6" min="1" name="start" id="start" value="">
+        </div>
+  
+        <div class="inputs">
+          <label for="competitor">Competidor *</label>
+          <input type="text" name="competitor" id="competitor" value="">
+        </div>
+  
+        <div class="inputs">
+          <label for="time">Tempo (s) *</label>
+          <input type="text" name="time" id="time" value="">
+        </div>
+
+        <input type="button" id="btnInsert" value="Inserir Dados" onclick="insertData()">
+        
+      </form>
+  
+      <table>
+  
+        <thead>
+          <tr>
+            <th>Largada</th>
+            <th>Competidor(a)</th>
+            <th>Tempo (s)</th>
+          </tr>
+        </thead>
+  
+        <tbody id="tbody1"></tbody>
+  
+      </table>
+
+    </div>
+    
+
+    <div class="results">
+
+      <input type="button" id="btnShowResults" value="Mostrar Resultados" onclick="showResults()" hidden>
+
+      <table id="tableResults" hidden>
+  
+        <thead>
+          <tr>
+            <th>Posição</th>
+            <th>Largada</th>
+            <th>Competidor(a)</th>
+            <th>Tempo (s)</th>
+            <th>Resultado</th>
+          </tr>
+        </thead>
+  
+        <tbody id="tbody2"></tbody>
+  
+      </table>
+
+    </div>
+
+  </div>
+  
+</body>
+</html>

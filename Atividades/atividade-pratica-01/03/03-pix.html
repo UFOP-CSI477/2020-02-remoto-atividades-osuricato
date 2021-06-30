@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Controle de Pix</title>
+
+  <link rel="stylesheet" href="03-pix.css">
+</head>
+<body>
+  
+  <div class="container">
+
+    <h1 styel>Controle de PIX</h1>
+
+    <main>
+
+      <form action="post">
+
+        <p>Informe seus dados</p>
+  
+        <select
+          class="fields"
+          name="key"
+          id="key"
+          required
+          onchange="loadBanks(), changePlaceholderValueKey()"
+        >
+          <option value="" selected disabled>Selecione o tipo de chave *</option>
+          <option value="1">CPF</option>
+          <option value="2">CNPJ</option>
+          <option value="3">E-mail</option>
+          <option value="4">Número de Celular</option>
+          <option value="5">Chave Aleatória</option>
+        </select>
+    
+        <input
+          type="text"
+          class="fields"
+          name="valueKey"
+          id="valueKey"
+          value=""
+          placeholder=""
+          required
+        >
+      
+        <select
+          class="fields"
+          name="banks"
+          id="banks"
+          required
+        >
+          <option value="" selected disabled>Selecione o banco *</option>
+        </select>
+
+        <input
+          class="fields"
+          type="text"
+          name="money"
+          id="money"
+          placeholder="Digite o valor: 0.00"
+          required
+        >
+
+        <input class="fields" type="date" name="dateValue" id="dateValue" required>
+    
+        <select
+          class="fields"
+          name="operation"
+          id="operation"
+
+          required
+        >
+          <option value="" selected disabled>Selecione o tipo da operação</option>
+          <option value="1">Envio</option>
+          <option value="2">Recebimento</option>
+        </select>
+
+        <input type="button" id="confirm" value="Confirmar" onclick="showReport()">
+  
+      </form>
+
+      <div class="report" id="report" style="display: none;">
+
+        <p>Resumo das Transações</p>
+
+        <div class="data">
+
+          <div class="fieldsData">
+            <strong><label for="received">Recebido:</label></strong>
+            <input type="text" name="received" id="received" disabled value="">
+          </div>
+
+          <div class="fieldsData">
+            <strong><label for="send">Enviado</label></strong>
+            <input type="text" name="send" id="send" disabled value="">
+          </div>
+
+          <div class="fieldsData">
+            <strong><label for="balance">Saldo</label></strong>
+            <input type="text" name="balance" id="balance" disabled value="">
+          </div>
+
+        </div>
+
+      </div>
+  
+
+    </main>
+
+    
+  </div>
+
+  <script src="03-pix.js"></script>
+
+</body>
+</html>

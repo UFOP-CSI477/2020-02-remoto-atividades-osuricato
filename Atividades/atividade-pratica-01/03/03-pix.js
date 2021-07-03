@@ -81,9 +81,12 @@ function verifyCorrectData() {
   const typeOperationOptionIndex = typeOperationSelect.selectedIndex
   const typeOperationOptionValue = typeOperationSelect.options[typeOperationOptionIndex].value
 
-  const validateDate = new Date(date.toString()) < new Date(new Date().toDateString())
+  const transferDate = new Date(date.toString())
+  const newDate = new Date(new Date().toDateString())
 
-  console.log(validateDate)
+  const validateDate = transferDate < newDate
+  const validateDayTransferDate = new Date(date.toString()).getDay() + 1
+  const validaDayNewDate = new Date(new Date().toDateString()).getDay()
 
   if (
     keyOptionValue.length === 0 ||
@@ -97,7 +100,7 @@ function verifyCorrectData() {
     window.alert('Preencha os campos corretamente!')
 
     return false
-  } if (validateDate) {
+  } if (validateDate && validateDayTransferDate !== validaDayNewDate) {
     window.alert('Informe uma data válida!')
 
     return false

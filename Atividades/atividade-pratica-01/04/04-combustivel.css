@@ -1,0 +1,149 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #F0F0F5;
+  -webkit-font-smoothing: antialiased;
+  
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.container {
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+main {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+
+  width: 100vw;
+}
+
+form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  width: 450px;
+  height: 500px;
+
+  border: 1px solid black;
+}
+
+form p {
+  margin-bottom: 32px;
+
+  font-size: 24px;
+}
+
+form label {
+  width: 350px;
+  text-align: left;
+
+  margin-bottom: 8px;
+}
+
+form .fields {
+  width: 350px;
+  height: 35px;
+
+  padding-left: 4px;
+  margin-bottom: 16px;
+  border-radius: 4px;
+
+  font-size: 16px;
+}
+
+form .buttons input {
+  width: 150px;
+  height: 35px;
+
+  cursor: pointer;
+  border: none;
+
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+
+  border-radius: 2px;
+}
+
+form #confirm {
+  background-color: #084472;
+}
+
+form #confirm:hover {
+  background-color: #0d6db6;
+}
+
+form #finish {
+  background-color: #229405;
+}
+
+form #finish:hover {
+  background-color: #2fbf0a;
+}
+
+.report {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+
+  width: 500px;
+  height: auto;
+
+  border: 1px solid black;
+}
+
+.report .data {
+  display: flex;
+  flex-direction: column;
+
+  font-size: 16px;
+
+  width: 480px;
+  margin-top: 16px;
+  margin-left: 16px;
+}
+
+.report .data p {
+  margin-bottom: 8px;
+}
+
+.report2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  width: 600px;
+  height: 300px;
+
+  border: 1px solid black;
+}
+
+.report2 .data2 {
+  display: flex;
+  flex-direction: column;
+
+  font-size: 16px;
+
+  width: 600px;
+  margin-top: 16px;
+  margin-left: 16px;
+}
+
+.report2 .data2 p {
+  margin-bottom: 16px;
+}

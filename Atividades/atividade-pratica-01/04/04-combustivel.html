@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consumo de Combustível</title>
+
+  <link rel="stylesheet" href="04-combustivel.css">
+
+</head>
+<body>
+
+  <div class="container">
+
+    <main id="main">
+
+      <form action="post">
+
+        <p>Registrar Veículos</p>
+  
+        <label for="name">Digite o nome do carro:</label>
+        <input
+          type="text"
+          class="fields"
+          name="name"
+          id="name"
+          value=""
+          required
+        >
+      
+        <label for="fuel">Digite a quantidade de combustível:</label>
+        <input
+          class="fields"
+          type="text"
+          name="fuel"
+          id="fuel"
+          value=""
+          required
+        >
+
+        <label for="km">Digite a quilometragem:</label>
+        <input
+          class="fields"
+          type="text"
+          name="km"
+          id="km"
+          value=""
+          required
+        >
+
+        <div class="buttons">
+
+          <input type="button" id="confirm" value="Confirmar" onclick="registerVehicle()">
+
+          <input type="button" id="finish" value="Finalizar" onclick="finishReport()">
+
+        </div>
+
+      </form>
+
+      <div class="report" id="report" style="display: none;">
+
+        <div class="data" id="data">
+
+      </div>
+
+    </main>
+
+    <div class="report2" id="report2" style="display: none;">
+
+      <div class="data2" id="data2">
+
+    </div>
+
+  </div>
+
+  <script src="04-combustivel.js"></script>
+  
+</body>
+</html>

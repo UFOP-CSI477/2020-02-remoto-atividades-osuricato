@@ -14,23 +14,26 @@ use Illuminate\Support\Facades\Route;
 */
 
 use App\Models\Product;
+use App\Http\Controllers\ProductController;
 
 Route::get('/', function () {
-    return view('welcome');
-});
+  return view('main');
+})->name('main');
 
-Route::get('/products', function () {
-  $products = Product::all();
+Route::resource('/products', ProductController::class);
 
-  return view('products', [ 'data' => $products ]);
-});
+// Route::get('/products', function () {
+//   $products = Product::all();
 
-Route::get('/products/{id}', function ($id) {
-  $product = Product::findOrFail($id);
+//   return view('products', [ 'data' => $products ]);
+// });
 
-  if ($product == null) {
-    return 'ID inválido!';
-  }
+// Route::get('/products/{id}', function ($id) {
+//   $product = Product::findOrFail($id);
 
-  return view('products', [ 'data' => $product ]);
-});
+//   if ($product == null) {
+//     return 'ID inválido!';
+//   }
+
+//   return view('products', [ 'data' => $product ]);
+// });

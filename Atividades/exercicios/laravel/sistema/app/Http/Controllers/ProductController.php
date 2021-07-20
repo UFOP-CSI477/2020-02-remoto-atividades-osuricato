@@ -26,7 +26,7 @@ class ProductController extends Controller
    */
   public function create()
   {
-    //
+    return view('products.create');
   }
 
   /**
@@ -37,7 +37,16 @@ class ProductController extends Controller
    */
   public function store(Request $request)
   {
-    //
+    // dd($request);
+
+    // $product = new Product;
+    // $product->name = $request->name;
+    // $product->unity = $request->unity;
+    // $product->save();
+
+    Product::create($request->all());
+    session()->flash('message', 'Produto cadastrado com sucesso!');
+    return redirect()->route('products.index');
   }
 
   /**
@@ -48,7 +57,7 @@ class ProductController extends Controller
    */
   public function show(Product $product)
   {
-    //
+    return view('products.show', [ 'product' => $product ]);
   }
 
   /**
@@ -59,7 +68,7 @@ class ProductController extends Controller
    */
   public function edit(Product $product)
   {
-    //
+    return view('products.edit', [ 'product' => $product ]);
   }
 
   /**
@@ -71,7 +80,13 @@ class ProductController extends Controller
    */
   public function update(Request $request, Product $product)
   {
-    //
+    // dd($request->all());
+
+    $product->fill($request->all());
+    $product->save();
+
+    session()->flash('message', 'Produto atualizado com sucesso!');
+    return redirect()->route('products.index');
   }
 
   /**
@@ -82,6 +97,8 @@ class ProductController extends Controller
    */
   public function destroy(Product $product)
   {
-    //
+    $product->delete();
+    session()->flash('message', 'Produto excluído com sucesso!');
+    return redirect()->route('products.index');
   }
 }

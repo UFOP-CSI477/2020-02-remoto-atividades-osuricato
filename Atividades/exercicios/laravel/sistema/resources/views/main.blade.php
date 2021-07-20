@@ -27,13 +27,13 @@
       </div>
     </nav>
 
-    <main id="main">
-      <div class="flex-column d-flex align-items-center d-grid gap-4">
-        <h1>Seja bem vindo ao Sistema de Vendas</h1>
+    @if(session('message'))
 
-        <p>Este é um Sistema de Vendas Web</p>
+      <div class="alert alert-success">
+        {{ session('message') }}
       </div>
-    </main>
+
+    @endif
 
     @yield('content')
   </div>

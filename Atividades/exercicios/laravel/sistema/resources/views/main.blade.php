@@ -20,9 +20,9 @@
       <div class="container-fluid d-flex justify-content-end">
         <ul class="row">
           <li class="col"> <a class="navbar-brand" href="{{route('main')}}">Início</a> </li>
-          <li class="col"> <a class="navbar-brand" href="">Estados</a> </li>
-          <li class="col"> <a class="navbar-brand" href="">Cidades</a> </li>
+          <li class="col"> <a class="navbar-brand" href="{{route('people.index')}}">Pessoas</a> </li>
           <li class="col"> <a class="navbar-brand" href="{{route('products.index')}}">Produtos</a> </li>
+          <li class="col"> <a class="navbar-brand" href="{{route('purchases.index')}}">Compras</a> </li>
         </ul>
       </div>
     </nav>

@@ -15,12 +15,16 @@ use Illuminate\Support\Facades\Route;
 
 use App\Models\Product;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\PeopleController;
+use App\Http\Controllers\PurchasesController;
 
 Route::get('/', function () {
   return view('main');
 })->name('main');
 
 Route::resource('/products', ProductController::class);
+Route::resource('/people', PeopleController::class);
+Route::resource('/purchases', PurchasesController::class);
 
 // Route::get('/products', function () {
 //   $products = Product::all();

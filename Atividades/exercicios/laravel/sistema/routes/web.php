@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-use App\Models\Product;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PeopleController;
 use App\Http\Controllers\PurchasesController;
@@ -22,22 +21,10 @@ Route::get('/', function () {
   return view('main');
 })->name('main');
 
-Route::resource('/products', ProductController::class);
-Route::resource('/people', PeopleController::class);
-Route::resource('/purchases', PurchasesController::class);
+Route::resource('/products', ProductController::class)->middleware('auth');
+Route::resource('/people', PeopleController::class)->middleware('auth');
+Route::resource('/purchases', PurchasesController::class)->middleware('auth');
 
-// Route::get('/products', function () {
-//   $products = Product::all();
+Auth::routes();
 
-//   return view('products', [ 'data' => $products ]);
-// });
-
-// Route::get('/products/{id}', function ($id) {
-//   $product = Product::findOrFail($id);
-
-//   if ($product == null) {
-//     return 'ID inválido!';
-//   }
-
-//   return view('products', [ 'data' => $product ]);
-// });
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

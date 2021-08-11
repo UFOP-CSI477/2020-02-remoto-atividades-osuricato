@@ -14,9 +14,9 @@ class equipamentController extends Controller
    */
   public function index()
   {
-    $equipament = Equipament::orderBy('name')->get();
+    $equipaments = Equipament::orderBy('name')->get();
 
-    return view('equipament.index', ['equipament' => $equipament]);
+    return view('equipaments.index', ['equipaments' => $equipaments]);
   }
 
   /**
@@ -26,7 +26,7 @@ class equipamentController extends Controller
    */
   public function create()
   {
-    return view('equipament.create');
+    return view('equipaments.create');
   }
 
   /**
@@ -38,8 +38,8 @@ class equipamentController extends Controller
   public function store(Request $request)
   {
     Equipament::create($request->all());
-    session()->flash('message', 'Usuário cadastrado com sucesso!');
-    return redirect()->route('equipament.index');
+    session()->flash('message', 'Equipamento cadastrado com sucesso!');
+    return redirect()->route('equipaments.index');
   }
 
   /**
@@ -50,7 +50,7 @@ class equipamentController extends Controller
    */
   public function show(Equipament $equipament)
   {
-    return view('equipament.show', ['equipament' => $equipament]);
+    return view('equipaments.show', ['equipament' => $equipament]);
   }
 
   /**
@@ -61,7 +61,7 @@ class equipamentController extends Controller
    */
   public function edit(Equipament $equipament)
   {
-    return view('equipament.edit', ['equipament' => $equipament]);
+    return view('equipaments.edit', ['equipament' => $equipament]);
   }
 
   /**
@@ -76,8 +76,8 @@ class equipamentController extends Controller
     $equipament->fill($request->all());
     $equipament->save();
 
-    session()->flash('message', 'Usuário atualizado com sucesso!');
-    return redirect()->route('equipament.index');
+    session()->flash('message', 'Equipamento atualizado com sucesso!');
+    return redirect()->route('equipaments.index');
   }
 
   /**
@@ -89,7 +89,7 @@ class equipamentController extends Controller
   public function destroy(Equipament $equipament)
   {
     $equipament->delete();
-    session()->flash('message', 'Usuário deletado com sucesso!');
-    return redirect()->route('equipament.index');
+    session()->flash('message', 'Equipamento deletado com sucesso!');
+    return redirect()->route('equipaments.index');
   }
 }

@@ -13,6 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+use App\Http\Controllers\EquipamentController;
+use App\Http\Controllers\RegisterController;
+
 Route::get('/', function () {
   return view('main');
 })->name('main');
+
+Route::get('/suport', function () {
+  return view('suport');
+})->name('suport');
+
+Route::resource('/equipaments', EquipamentController::class);
+Route::resource('/registers', RegisterController::class);

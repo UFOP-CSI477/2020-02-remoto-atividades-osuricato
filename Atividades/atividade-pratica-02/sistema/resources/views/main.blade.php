@@ -8,9 +8,6 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="stylesheet" href="../css/global.css">
-  <link rel="stylesheet" href="../css/home.css">
-
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -24,8 +21,8 @@
     <nav class="menu navbar navbar-dark bg-dark">
       <div class="container-fluid d-flex justify-content-end">
         <ul class="row">
-          <li class="col"> <a class="navbar-brand" href="">Início</a> </li>
-          <li class="col"> <a class="navbar-brand" href="">Área geral - Suporte</a> </li>
+          <li class="col"> <a class="navbar-brand" href="{{route('main')}}">Início</a> </li>
+          <li class="col"> <a class="navbar-brand" href="{{route('suport')}}">Área geral - Suporte</a> </li>
           <li class="col"> <a class="navbar-brand" href="">Área Administrativa</a> </li>
 
           <!-- @guest

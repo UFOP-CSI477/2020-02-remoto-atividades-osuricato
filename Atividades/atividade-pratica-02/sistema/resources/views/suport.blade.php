@@ -6,7 +6,7 @@
     <ul>
       <li> <a href="{{route('equipaments.index')}}">Listagem de Equipamentos</a></li>
 
-      <li> <a href="{{route('registers.index')}}">Listagem de manutenções para os equipamentos</a> </li>
+      <li> <a href="{{route('registers.index')}}">Listagem de Manutenções</a> </li>
     </ul>
   </div>
 

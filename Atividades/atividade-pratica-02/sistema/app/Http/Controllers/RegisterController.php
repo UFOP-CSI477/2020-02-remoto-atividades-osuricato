@@ -16,7 +16,7 @@ class RegisterController extends Controller
    */
   public function index()
   {
-    $registers = Register::orderBy('name')->get();
+    $registers = Register::orderByDesc('limit_date')->get();
 
     return view('registers.index', ['registers' => $registers]);
   }
@@ -28,9 +28,9 @@ class RegisterController extends Controller
    */
   public function create()
   {
-    $user = User::orderBy('name')->get();
-    $equipament = Equipament::orderBy('name')->get();
-    return view('registers.create', ['user' => $user, 'equipament' => $equipament]);
+    $users = User::orderBy('name')->get();
+    $equipaments = Equipament::orderBy('name')->get();
+    return view('registers.create', ['users' => $users, 'equipaments' => $equipaments]);
   }
 
   /**
@@ -52,9 +52,9 @@ class RegisterController extends Controller
    * @param  \App\Models\Register
    * @return \Illuminate\Http\Response
    */
-  public function show(Register $registers)
+  public function show(Register $register)
   {
-    return view('registers.show', ['registers' => $registers]);
+    return view('registers.show', ['register' => $register]);
   }
 
   /**
@@ -63,11 +63,11 @@ class RegisterController extends Controller
    * @param  \App\Models\Register
    * @return \Illuminate\Http\Response
    */
-  public function edit(Register $registers)
+  public function edit(Register $register)
   {
-    $user = User::orderBy('name')->get();
-    $equipament = Equipament::orderBy('name')->get();
-    return view('registers.edit', ['registers' => $registers, 'user' => $user, 'equipament' => $equipament]);
+    $users = User::orderBy('name')->get();
+    $equipaments = Equipament::orderBy('name')->get();
+    return view('registers.edit', ['register' => $register, 'users' => $users, 'equipaments' => $equipaments]);
   }
 
   /**
@@ -77,10 +77,10 @@ class RegisterController extends Controller
    * @param  \App\Models\Register
    * @return \Illuminate\Http\Response
    */
-  public function update(Request $request, Register $registers)
+  public function update(Request $request, Register $register)
   {
-    $registers->fill($request->all());
-    $registers->save();
+    $register->fill($request->all());
+    $register->save();
 
     session()->flash('message', 'Registro atualizado com sucesso!');
     return redirect()->route('registers.index');
@@ -92,9 +92,9 @@ class RegisterController extends Controller
    * @param  \App\Models\Register
    * @return \Illuminate\Http\Response
    */
-  public function destroy(Register $registers)
+  public function destroy(Register $register)
   {
-    $registers->delete();
+    $register->delete();
     session()->flash('message', 'Registro excluído com sucesso!');
     return redirect()->route('registers.index');
   }

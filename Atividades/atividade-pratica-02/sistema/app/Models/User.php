@@ -42,6 +42,6 @@ class User extends Authenticatable
   ];
 
   public function registers() {
-    return $this->hasMany(REgisters::class);
+    return $this->hasMany(Register::class);
   }
 }

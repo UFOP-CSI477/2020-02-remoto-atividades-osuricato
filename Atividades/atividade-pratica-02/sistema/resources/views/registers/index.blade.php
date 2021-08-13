@@ -2,8 +2,6 @@
 
 @section('content')
 
-  <a href="{{route('registers.create')}}">Cadastrar Manutenção</a>
-
   <table class="table table-bordered table-hover table-striped">
     <thead class="thead-dark">
       <tr>

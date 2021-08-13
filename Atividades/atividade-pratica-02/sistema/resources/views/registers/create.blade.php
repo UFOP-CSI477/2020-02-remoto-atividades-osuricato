@@ -16,7 +16,7 @@
     
     <select name="equipament_id" id="equipament_id" class="form-control" required>
 
-      @foreach($equipament as $e)
+      @foreach($equipaments as $e)
         <option value="{{$e->id}}">{{$e->name}}</option>
       @endforeach
 
@@ -28,7 +28,7 @@
     
     <select name="user_id" id="user_id" class="form-control" required>
 
-      @foreach($user as $e)
+      @foreach($users as $e)
         <option value="{{$e->id}}">{{$e->name}}</option>
       @endforeach
 

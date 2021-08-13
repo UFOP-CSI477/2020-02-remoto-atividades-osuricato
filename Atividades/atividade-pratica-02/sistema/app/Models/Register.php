@@ -17,11 +17,11 @@ class Register extends Model
     'type'
   ];
 
-  public function users() {
+  public function user() {
     return $this->belongsTo(User::class);
   }
 
-  public function equipaments() {
+  public function equipament() {
     return $this->belongsTo(Equipament::class);
   }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Equipament;
+use App\Models\Register;
 use Illuminate\Http\Request;
 
 class equipamentController extends Controller
@@ -88,6 +89,11 @@ class equipamentController extends Controller
    */
   public function destroy(Equipament $equipament)
   {
+    if (count($equipament->registers) > 0) {
+      session()->flash('message-failed', 'Existe(m) registro(s) de manutenção do equipamento, portanto não pode ser deletado!');
+      return redirect()->route('equipaments.index');
+    }
+
     $equipament->delete();
     session()->flash('message', 'Equipamento deletado com sucesso!');
     return redirect()->route('equipaments.index');

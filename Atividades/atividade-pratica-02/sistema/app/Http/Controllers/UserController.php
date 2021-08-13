@@ -14,9 +14,9 @@ class UserController extends Controller
    */
   public function index()
   {
-    $user = User::orderBy('name')->get();
+    $users = User::orderBy('name')->get();
 
-    return view('user.index', ['user' => $user]);
+    return view('users.index', ['users' => $users]);
   }
 
   /**
@@ -26,7 +26,7 @@ class UserController extends Controller
    */
   public function create()
   {
-    return view('user.create');
+    return view('users.create');
   }
 
   /**
@@ -39,7 +39,7 @@ class UserController extends Controller
   {
     User::create($request->all());
     session()->flash('message', 'Usuário cadastrado com sucesso!');
-    return redirect()->route('user.index');
+    return redirect()->route('users.index');
   }
 
   /**
@@ -50,7 +50,7 @@ class UserController extends Controller
    */
   public function show(User $user)
   {
-    return view('user.show', ['user' => $user]);
+    return view('users.show', ['user' => $user]);
   }
 
   /**
@@ -61,7 +61,7 @@ class UserController extends Controller
    */
   public function edit(User $user)
   {
-    return view('user.edit', ['user' => $user]);
+    return view('users.edit', ['user' => $user]);
   }
 
   /**
@@ -77,7 +77,7 @@ class UserController extends Controller
     $user->save();
 
     session()->flash('message', 'Usuário atualizado com sucesso!');
-    return redirect()->route('user.index');
+    return redirect()->route('users.index');
   }
 
   /**
@@ -90,6 +90,6 @@ class UserController extends Controller
   {
     $user->delete();
     session()->flash('message', 'Usuário deletado com sucesso!');
-    return redirect()->route('user.index');
+    return redirect()->route('users.index');
   }
 }

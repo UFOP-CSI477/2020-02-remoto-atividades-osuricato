@@ -18,7 +18,8 @@ export class CreatePlace1629235704682 implements MigrationInterface {
           },
           {
             name: "image",
-            type: "varchar"
+            type: "varchar",
+            isNullable: true
           },
           {
             name: "email",

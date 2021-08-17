@@ -1,33 +1,40 @@
 import { Column, Entity, PrimaryColumn } from "typeorm";
+import { v4 as uuidv4 } from "uuid";
 
 @Entity("places")
 class Place {
   @PrimaryColumn()
-  id: string
+  id: string;
 
   @Column()
-  name: string
+  name: string;
 
   @Column()
-  image: string
+  image: string;
 
   @Column()
-  email: string
+  email: string;
 
   @Column()
-  whatsapp: string
+  whatsapp: string;
 
   @Column()
-  latitude: number
+  latitude: number;
 
   @Column()
-  longitude: number
+  longitude: number;
 
   @Column()
-  city: string
+  city: string;
 
   @Column()
-  uf: string
+  uf: string;
+
+  constructor() {
+    if (!this.id) {
+      this.id = uuidv4();
+    }
+  }
 }
 
 export { Place }

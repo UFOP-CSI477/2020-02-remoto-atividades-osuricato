@@ -1,19 +1,24 @@
-import express, { NextFunction, Request, Response } from 'express';
-import 'reflect-metadata';
-import 'express-async-errors';
+import "express-async-errors";
+import "reflect-metadata";
+import "dotenv/config";
+import cors from "cors";
+import express, { NextFunction, Request, Response } from "express";
 
 import "@shared/container";
+import "@shared/infra/typeorm";
 
-import { AppError } from '@shared/errors/AppErro';
+import upload from "@config/upload";
+import { AppError } from "@shared/errors/AppError";
 import { router } from "@shared/infra/http/routes";
-import { createConnection } from 'typeorm';
-
-createConnection();
 
 const app = express();
 
 app.use(express.json());
 
+app.use("/avatar", express.static(`${upload.tmpFolder}/avatar`));
+app.use("/cars", express.static(`${upload.tmpFolder}/cars`));
+
+app.use(cors());
 app.use(router);
 
 app.use(
@@ -25,10 +30,10 @@ app.use(
     }
 
     return response.status(500).json({
-      status: 'error',
+      status: "error",
       message: `Internal server error - ${err.message}`,
     });
-  },
+  }
 );
 
 export { app };

@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { container } from "tsyringe";
 
-import { CreateCarService } from "./CreateCarService";
+import { CreateCarService } from "@modules/cars/services/CreateCarService";
 
 class CreateCarController {
   async handle(request: Request, response: Response): Promise<Response> {

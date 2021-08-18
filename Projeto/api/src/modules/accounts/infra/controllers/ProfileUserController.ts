@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { container } from "tsyringe";
 
-import { ProfileUserUseCase } from "./ProfileUserUseCase";
+import { ProfileUserUseCase } from "@modules/accounts/useCases/profileUserUseCase/ProfileUserUseCase";
 
 class ProfileUserController {
   async handle(request: Request, response: Response): Promise<Response> {

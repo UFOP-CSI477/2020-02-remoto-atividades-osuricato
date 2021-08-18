@@ -17,7 +17,7 @@ interface ITokenResponse {
 }
 
 @injectable()
-class RefreshTokenUseCase {
+class RefreshTokenService {
   constructor(
     @inject("UsersTokenRepository")
     private usersTokenRepository: IUsersTokenRepository,
@@ -68,4 +68,4 @@ class RefreshTokenUseCase {
   }
 }
 
-export { RefreshTokenUseCase };
+export { RefreshTokenService };

@@ -1,18 +1,18 @@
 import { Request, Response } from "express";
 import { container } from "tsyringe";
 
-import { CreateCarSpecificationUseCase } from "./CreateCarSpecificationUseCase";
+import { CreateCarSpecificationService } from "./CreateCarSpecificationService";
 
 class CreateCarSpecificationController {
   async handle(request: Request, response: Response): Promise<Response> {
     const { id } = request.params;
     const { specifications_id } = request.body;
 
-    const createCarSpecificationUseCase = container.resolve(
-      CreateCarSpecificationUseCase
+    const createCarSpecificationService = container.resolve(
+      CreateCarSpecificationService
     );
 
-    const cars = await createCarSpecificationUseCase.execute({
+    const cars = await createCarSpecificationService.execute({
       car_id: id,
       specifications_id,
     });

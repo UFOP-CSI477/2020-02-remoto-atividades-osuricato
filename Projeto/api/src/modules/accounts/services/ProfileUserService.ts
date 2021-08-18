@@ -6,7 +6,7 @@ import { UserMap } from "@modules/accounts/mapper/UserMap";
 import { IUsersRepository } from "@modules/accounts/repositories/IUsersRepository";
 
 @injectable()
-class ProfileUserUseCase {
+class ProfileUserService {
   constructor(
     @inject("UsersRepository")
     private usersRepository: IUsersRepository
@@ -19,4 +19,4 @@ class ProfileUserUseCase {
   }
 }
 
-export { ProfileUserUseCase };
+export { ProfileUserService };

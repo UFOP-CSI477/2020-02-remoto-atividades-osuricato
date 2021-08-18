@@ -4,7 +4,7 @@ import { Rental } from "@modules/rentals/infra/typeorm/entities/Rental";
 import { IRentalsRepository } from "@modules/rentals/repositories/IRentalsRepository";
 
 @injectable()
-class ListRentalsByUserUseCase {
+class ListRentalsByUserService {
   constructor(
     @inject("RentalsRepository")
     private rentalsRepository: IRentalsRepository
@@ -17,4 +17,4 @@ class ListRentalsByUserUseCase {
   }
 }
 
-export { ListRentalsByUserUseCase };
+export { ListRentalsByUserService };

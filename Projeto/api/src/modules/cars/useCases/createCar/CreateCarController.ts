@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { container } from "tsyringe";
 
-import { CreateCarUseCase } from "./CreateCarUseCase";
+import { CreateCarService } from "./CreateCarService";
 
 class CreateCarController {
   async handle(request: Request, response: Response): Promise<Response> {
@@ -15,9 +15,9 @@ class CreateCarController {
       category_id,
     } = request.body;
 
-    const createCarUseCase = container.resolve(CreateCarUseCase);
+    const createCarService = container.resolve(CreateCarService);
 
-    const car = await createCarUseCase.execute({
+    const car = await createCarService.execute({
       name,
       description,
       daily_rate,

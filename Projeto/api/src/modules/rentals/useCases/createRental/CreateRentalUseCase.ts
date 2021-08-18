@@ -13,7 +13,7 @@ interface IRequest {
 }
 
 @injectable()
-class CreateRentalUseCase {
+class CreateRentalService {
   constructor(
     @inject("RentalsRepository")
     private rentalsRepository: IRentalsRepository,
@@ -69,4 +69,4 @@ class CreateRentalUseCase {
   }
 }
 
-export { CreateRentalUseCase };
+export { CreateRentalService };

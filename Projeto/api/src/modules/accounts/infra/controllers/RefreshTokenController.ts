@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { container } from "tsyringe";
 
-import { RefreshTokenUseCase } from "@modules/accounts/useCases/refreshToken/RefreshTokenUseCase";
+import { RefreshTokenService } from "@modules/accounts/services/RefreshTokenService";
 
 class RefreshTokenController {
   async handle(request: Request, response: Response): Promise<Response> {
@@ -10,9 +10,9 @@ class RefreshTokenController {
       request.headers["x-access-token"] ||
       request.query.token;
 
-    const refreshTokenUseCase = container.resolve(RefreshTokenUseCase);
+    const refreshTokenService = container.resolve(RefreshTokenService);
 
-    const refresh_token = await refreshTokenUseCase.execute(token);
+    const refresh_token = await refreshTokenService.execute(token);
 
     return response.json(refresh_token);
   }

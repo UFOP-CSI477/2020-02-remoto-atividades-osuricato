@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { container } from "tsyringe";
 
-import { DevolutionRentalService } from "./DevolutionRentalService";
+import { DevolutionRentalService } from "@modules/rentals/services/DevolutionRentalService";
 
 class DevolutionRentalController {
   async handle(request: Request, response: Response): Promise<Response> {

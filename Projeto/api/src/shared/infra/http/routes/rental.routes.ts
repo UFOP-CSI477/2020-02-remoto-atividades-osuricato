@@ -1,8 +1,8 @@
 import { Router } from "express";
 
-import { CreateRentalController } from "@modules/rentals/Services/createRental/CreateRentalController";
-import { DevolutionRentalController } from "@modules/rentals/Services/devolutionRental/DevolutionRentalController";
-import { ListRentalByUserController } from "@modules/rentals/Services/ListRentalsByUserController.ts/ListRentalsByUserController";
+import { CreateRentalController } from "@modules/rentals/infra/controllers/CreateRentalController";
+import { DevolutionRentalController } from "@modules/rentals/infra/controllers/DevolutionRentalController";
+import { ListRentalByUserController } from "@modules/rentals/infra/controllers/ListRentalsByUserController";
 
 import { ensureAuthenticated } from "../middlewares/ensureAuthenticated";
 

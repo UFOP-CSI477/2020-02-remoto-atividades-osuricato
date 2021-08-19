@@ -7,22 +7,21 @@ import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 
 import { useAuth } from '../../hooks/auth';
-import logo from '../../assets/logo.svg';
+
+import logo from '../../assets/images/logo.svg'
 
 import {
-  Div,
+  Container,
   Body,
-  Button,
-  Logo,
-  Text,
-  LogoContainer,
   FormContainer,
+  LogoContainer,
+  Button,
+  Text,
   FormButton,
-  P,
 } from './styles';
 
 import Input from '../../components/Input';
-import getValidationErrors from '../../utils/getValidateErrors';
+import validationErrors from '../../utils/validateErrors';
 
 interface SignInFormData {
   email: string;
@@ -61,21 +60,21 @@ export function Login() {
       history.push('/dashboard');
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
-        const errors = getValidationErrors(err);
+        const errors = validationErrors(err);
 
         formRef.current?.setErrors(errors);
 
         return;
       }
-      setError('Falha no login, verifique Usuário e/ou Senha.');
+      setError('Falha no login, verifique usuário e/ou senha.');
     }
   }
 
   return (
-    <Div>
+    <Container>
       <Body>
         <LogoContainer>
-          <Logo src={logo} />
+          <img src={logo} alt="Logo" />
         </LogoContainer>
 
         <FormContainer>
@@ -87,7 +86,7 @@ export function Login() {
             <Input id="email" name="email" icon={AiOutlineUser} />
 
             <Text>
-              <P>Senha:</P>
+              <p>Senha:</p>
             </Text>
             <Input
               id="password"
@@ -106,13 +105,13 @@ export function Login() {
             <FormButton>
               <Button type="submit">
                 <span>ENTRAR</span>
-                <FiLogIn size={40} />
+                <FiLogIn size={20} />
               </Button>
             </FormButton>
           </Form>
         </FormContainer>
       </Body>
-    </Div>
+    </Container>
   );
 }
 

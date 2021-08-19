@@ -1,39 +1,40 @@
 import styled from 'styled-components';
 import { shade } from 'polished';
 
-export const Div = styled.div`
+export const Container = styled.div`
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(
-    117.57deg,
-    rgba(6, 57, 102, 0.71) 0%,
-    #67ba99 97.92%,
-    #67ba99 97.92%
-  );
-  background-blend-mode: multiply;
+  background: #1B1B1F;
 
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  img {
-    margin-top: -6rem;
-  }
 `;
 
-export const Logo = styled.img`
-  padding-top: 25%;
-  @media (max-width: 50rem) {
-    padding-top: 38%;
-  }
+export const Body = styled.div`
+  display: flex;
+
+  flex-wrap: wrap;
+  width: 30rem;
+  height: 26rem;
+
+  padding: 2.25rem;
+
+  background: #dbdbdb;
+  border-radius: 0.625rem;
+  box-shadow: 0.625rem 0.625rem 0.25rem rgba(0, 0, 0, 0.25);
 `;
 
 export const LogoContainer = styled.div`
   width: 100%;
-  height: 15%;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  img {
+    width: 8rem;
+  }
 `;
 
 export const FormContainer = styled.div`
@@ -42,14 +43,12 @@ export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-left: 2rem;
-  padding-right: 2rem;
 
-  span {
-    font-family: 'Poppins', sans-serif;
+  p {
+    font-family: 'Poppins' sans-serif;
     font-weight: 500;
-    font-size: 0.7rem;
-    color: #063966;
+    font-size: 1.125rem;
+    color: #1B1B1F;
 
     transform: color 0.2s;
   }
@@ -63,12 +62,17 @@ export const FormContainer = styled.div`
     margin-bottom: 0.5rem;
 
     span {
-      text-align: center;
+      font-family: 'Poppins' sans-serif;
+      font-weight: 500;
+      font-size: 0.75rem;
+      color: #1B1B1F;
+
+      transform: color 0.2s;
     }
 
     .error-password {
       margin-left: 3rem;
-      color: #e64438;
+      color: #DC1637;
     }
   }
 `;
@@ -89,20 +93,18 @@ export const Button = styled.button`
   margin-top: 0.5rem;
 
   display: flex;
-  justify-content: space-between;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  justify-content: center;
   align-items: center;
-  border-radius: 0.625rem;
+  border-radius: 0.5rem;
 
-  background: #174c82;
+  background: #DC1637;
   border: none;
   color: white;
 
-  transition: background-color 0.2s;
+  transition: 0.5s;
 
   &:hover {
-    background: ${shade(0.4, '#174C82')};
+    background: ${shade(0.4, '#DC1637')};
   }
 
   span {
@@ -116,32 +118,8 @@ export const Button = styled.button`
 `;
 
 export const Text = styled.p`
-  color: #063966;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 300;
+  font-weight: 500;
   font-size: 1rem;
   margin-top: 1rem;
   margin-bottom: 0.5rem;
-`;
-
-export const P = styled.p`
-  text-align: start;
-`;
-
-export const Body = styled.div`
-  display: flex;
-
-  flex-wrap: wrap;
-  width: 30rem;
-  height: 26rem;
-
-  padding: 2.25rem;
-
-  background: #dbdbdb;
-  border-radius: 0.625rem;
-  box-shadow: 0.625rem 0.625rem 0.25rem rgba(0, 0, 0, 0.25);
-
-  @media (max-width: 50rem) {
-    width: 20rem;
-  }
 `;

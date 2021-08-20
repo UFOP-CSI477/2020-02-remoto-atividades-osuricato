@@ -28,7 +28,7 @@ const Header: React.FC = () => {
       <ContentContainer>
         <Link to="/profile">
           <Profile>
-            <span>Samuel</span>
+            <span>{user.name}</span>
             {/* <img src={user.avatar_url} alt="User Avatar" /> */}
           </Profile>
         </Link>

@@ -6,6 +6,7 @@ import uploadConfig from "@config/upload";
 import { ensureAuthenticated } from "@shared/infra/http/middlewares/ensureAuthenticated";
 import { CreateUserController } from "@modules/accounts/infra/controllers/CreateUserController";
 import { ListUsersController } from "@modules/accounts/infra/controllers/ListUsersController";
+import { DeleteUserController } from "@modules/accounts/infra/controllers/DeleteUserController";
 import { UpdateUserAvatarController } from "@modules/accounts/infra/controllers/UpdateUserAvatarController";
 import { ProfileUserController } from "@modules/accounts/infra/controllers/ProfileUserController";
 
@@ -15,12 +16,15 @@ const uploadAvatar = multer(uploadConfig);
 
 const createUsersController = new CreateUserController();
 const listUsersController = new ListUsersController()
+const deleteUserController = new DeleteUserController()
 const updateUserAvatarController = new UpdateUserAvatarController();
 const profileUserController = new ProfileUserController();
 
 usersRoutes.post("/", createUsersController.handle);
 
 usersRoutes.get("/", listUsersController.handle);
+
+usersRoutes.delete("/:id", deleteUserController.handle);
 
 usersRoutes.patch(
   "/avatar",

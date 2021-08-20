@@ -4,22 +4,18 @@ import { BrowserRouter, Switch } from 'react-router-dom';
 import Route from './Route';
 
 import Login from '../pages/Login';
+import Dashboard from '../pages/Dashboard';
+import Users from '../pages/Users';
 
 const Routes: React.FC = () => {
   return (
     <BrowserRouter>
       <Switch>
         <Route path="/" exact component={Login} />
-        {/* <Route path="/login/reset-password" exact component={ResetPassword} />
-        <Route path="/login/new-password" exact component={NewPassword} />
-        <Route path="/dashboard" exact component={Dashboard} isPrivate /> */}
-        {/* <Route path="/profile" exact component={Profile} isPrivate /> */}
-        {/* <Route
-          path="/administration/profiles"
-          exact
-          component={Profiles}
-          isPrivate
-        /> */}
+
+        <Route path="/dashboard" exact component={Dashboard} isPrivate />
+
+        <Route path="/users" exact component={Users} isPrivate />
       </Switch>
     </BrowserRouter>
   );

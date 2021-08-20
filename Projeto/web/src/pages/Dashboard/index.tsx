@@ -1,5 +1,5 @@
-// import Header from '../../components/Header';
-// import SideBar from '../../components/SideBar';
+import Header from '../../components/Header';
+import SideBar from '../../components/SideBar';
 
 import { useSignMenu } from '../../hooks/toggle';
 
@@ -11,10 +11,10 @@ export function Dashboard() {
 
   return (
     <Container>
-      {/* <Header /> */}
+      <Header />
 
       <Content>
-        {/* <SideBar /> */}
+        <SideBar />
       </Content>
     </Container>
   );

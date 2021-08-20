@@ -43,11 +43,11 @@ export const Container = styled.div<ContainerProps>`
   ${props =>
     props.isFocused &&
     css`
-      border-bottom: 0.15rem solid #063966;
-      color: #063966;
+      border-bottom: 0.15rem solid #1B1B1F;
+      color: #1B1B1F;
 
       svg {
-        color: #063966;
+        color: #1B1B1F;
       }
     `}
 

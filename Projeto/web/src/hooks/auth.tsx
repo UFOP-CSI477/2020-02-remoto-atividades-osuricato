@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { createContext, useCallback, useContext, useState } from 'react';
 import { decode, JwtPayload } from 'jsonwebtoken';
 
@@ -58,6 +59,7 @@ export const AuthProvider: React.FC = ({ children }) => {
 
     const { token, user, refresh_token } = response.data;
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     refresh_token_new = refresh_token;
 
     localStorage.setItem('@Calculator-Rentx:token', token);
@@ -83,7 +85,7 @@ export const AuthProvider: React.FC = ({ children }) => {
 
       if (Date.now() >= Number(exp) * 1000) {
         try {
-          const response = await api.post('/sessions/refresh-token', {
+          const response = await api.post('/refresh-token', {
             token: refresh_token_new,
           });
 

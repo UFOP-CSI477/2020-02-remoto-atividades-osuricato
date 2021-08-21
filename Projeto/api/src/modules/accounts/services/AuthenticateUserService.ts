@@ -17,6 +17,7 @@ interface IResponse {
   user: {
     name: string;
     email: string;
+    isAdmin: boolean
   };
   token: string;
   refresh_token: string;
@@ -35,6 +36,7 @@ class AuthenticateUserService {
 
   async execute({ email, password }: IRequest): Promise<IResponse> {
     const user = await this.usersRepository.findByEmail(email);
+
     const {
       expires_in_token,
       secret_token,
@@ -42,6 +44,7 @@ class AuthenticateUserService {
       expires_in_refresh_token,
       expires_refresh_token_days,
     } = auth;
+
     if (!user) {
       throw new AppError("Email or password incorrect!");
     }
@@ -77,6 +80,7 @@ class AuthenticateUserService {
       user: {
         name: user.name,
         email: user.email,
+        isAdmin: user.isAdmin
       },
       refresh_token,
     };

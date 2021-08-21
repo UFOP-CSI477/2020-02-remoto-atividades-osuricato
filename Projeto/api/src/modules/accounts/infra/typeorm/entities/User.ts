@@ -20,7 +20,7 @@ class User {
   driver_license: string;
 
   @Column()
-  isAdmin: string;
+  isAdmin: boolean;
 
   @Column()
   avatar: string;

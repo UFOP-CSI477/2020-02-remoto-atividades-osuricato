@@ -1,10 +1,10 @@
 
-import React, {useRef, useCallback} from 'react';
+import React, { useRef, useCallback, useState } from 'react';
 import Swal from 'sweetalert2';
 import toast, { Toaster } from 'react-hot-toast';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
-import { Link, useHistory } from 'react-router-dom'
+import { Link, useHistory, useLocation } from 'react-router-dom'
 import { FiArrowLeft, FiUser, FiMail, FiLock } from "react-icons/fi";
 import * as Yup from 'yup';
 
@@ -31,23 +31,43 @@ interface UserFormData {
   name: string;
   email: string;
   password: string;
+  isAdmin: boolean;
   driver_license: string;
 }
 
-const CreateUser: React.FC = () => {
+interface User {
+  id: string;
+  name: string;
+  email: string;
+  password: string;
+  isAdmin: boolean;
+  driver_license: string;
+}
+
+const EditUser: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const history = useHistory();
 
-  function createUserSuccess() {
-    toast.success('Usuário criado com sucesso!');
+  const [admin, setAdmin] = useState()
+
+  const location = useLocation();
+  const user = location.state as User;
+
+  function editUserSuccess() {
+    toast.success('Usuário editado com sucesso!');
   }
 
-  function createUserError() {
+  function editUserError() {
     Swal.fire(
       'Erro!',
-      'Ocorreu um erro ao criar o usuário, verifique os dados e tente novamente.',
+      'Ocorreu um erro ao editar o usuário, verifique os dados e tente novamente.',
       'error',
     );
+  }
+
+  function handleChangeAdmin(event: any): void {
+    const isAdmin = event.target.checked;
+    setAdmin(isAdmin);
   }
 
   const handleSubmit = useCallback(
@@ -66,20 +86,24 @@ const CreateUser: React.FC = () => {
           abortEarly: false,
         });
 
-        await api.post('users', {
+        console.log(admin)
+
+
+        await api.put(`users/${user.id}`, {
           name: data.name,
           email: data.email,
           password: data.password,
+          isAdmin: admin,
           driver_license: data.driver_license
         })
 
-        createUserSuccess();
+        editUserSuccess();
         history.push('/users');
       } catch (error) {
-        createUserError();
+        editUserError();
       }
     },
-    [history],
+    [history, user, admin],
   );
 
   return (
@@ -101,11 +125,10 @@ const CreateUser: React.FC = () => {
             </Link>
           </BackButton>
           <TitleContainer>
-            <Title>Criar usuário</Title>
+            <Title>Editar usuário</Title>
           </TitleContainer>
         </BackButtonTitleContainer>
         
-
         <FormContainer>
           <Form ref={formRef} onSubmit={handleSubmit}>
             <InputsContainer>
@@ -144,8 +167,17 @@ const CreateUser: React.FC = () => {
                 placeholder="Nº carteira de motorista"
               />
 
+              <div className="checkbox">
+                <label htmlFor="isAdmin">Tornar usuário administrador</label>
+                <input
+                  type="checkbox"
+                  name="isAdmin"
+                  onChange={handleChangeAdmin}
+                />
+              </div>
+              
               <ButtonContainer>
-                <Button type="submit">Cadastrar</Button>
+                <Button type="submit">Editar</Button>
               </ButtonContainer>
 
             </InputsContainer>
@@ -156,4 +188,4 @@ const CreateUser: React.FC = () => {
   );
 }
 
-export default CreateUser
+export default EditUser

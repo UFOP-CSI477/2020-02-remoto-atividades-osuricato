@@ -87,14 +87,17 @@ const Users: React.FC = () => {
   }
 
   async function deleteUser(id: string) {
-    console.log(id)
     try {
-      await api.delete(`/users/${id}`);
-      const updateUsers = users.filter(user => user.id !== id);
+      const alert = window.confirm("Deseja excluir o usuário?")
 
-      deleteSuccess();
+      if (alert) {
+        await api.delete(`/users/${id}`);
+        const updateUsers = users.filter(user => user.id !== id);
 
-      setUsers(updateUsers);
+        deleteSuccess();
+        setUsers(updateUsers);
+      }
+      
     } catch (err) {
       deleteError();
       console.log(err);
@@ -122,7 +125,7 @@ const Users: React.FC = () => {
             </Form>
           </ContainerButton>
 
-          <Link to="/create-user">
+          <Link to="users/create-user">
             <ButtonNewUser type="submit">Novo usuário</ButtonNewUser>
           </Link>
         </ContainerHeader>
@@ -153,7 +156,7 @@ const Users: React.FC = () => {
                     </ButtonDelete>
                     <Link
                       to={{
-                        pathname: '/edit-user',
+                        pathname: 'users/edit-user',
                         state: {
                           id: user.id,
                           name: user.name,

@@ -57,6 +57,10 @@ export const ButtonNewUser = styled.button`
 
   background: #089b63;
   border-radius: 0.25rem;
+
+  :hover {
+    background: ${shade(0.1, '#088a58')};
+  }
 `;
 
 export const TableContainer = styled.div`
@@ -127,13 +131,14 @@ export const ButtonDelete = styled.button`
   padding: 0.3rem;
   border: transparent;
 
-  background: #777777;
+  background: #DC1637;
   border-radius: 0.25rem;
 
   color: #ffffff;
   transition: background-color 0.2s;
-  &:hover {
-    background: ${shade(0.2, '#777777')};
+  
+  :hover {
+    background: ${shade(0.2, '#DC1637')};
   }
 `;
 

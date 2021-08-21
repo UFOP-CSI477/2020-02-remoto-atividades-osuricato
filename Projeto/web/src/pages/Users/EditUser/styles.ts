@@ -38,6 +38,24 @@ export const InputsContainer = styled.div`
   flex-direction: column;
 
   width: 30rem;
+
+  .checkbox {
+    display: flex;
+    justify-content: space-between;
+
+    label {
+      font: Ubuntu;
+      color: #292929;
+      font-size: 1.25rem;
+      font-weight: 400;
+    }
+
+    input {
+      transform: scale(1.8);
+
+      cursor: pointer;
+    }
+  }
 `
 
 export const ButtonContainer = styled.div`

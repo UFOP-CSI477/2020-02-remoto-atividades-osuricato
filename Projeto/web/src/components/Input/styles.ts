@@ -17,10 +17,6 @@ export const Container = styled.div<ContainerProps>`
   width: 26rem;
   height: 3rem;
 
-  @media (max-width: 800px) {
-    width: 16rem;
-  }
-
   color: #292929;
   background-color: #c5c0c0;
 
@@ -58,11 +54,11 @@ export const Container = styled.div<ContainerProps>`
     `}
 
     input {
-    color: #292929;
-    background: transparent;
-    border: 0;
-    width: 100%;
-    height: 1.5rem;
+      color: #292929;
+      background: transparent;
+      border: 0;
+      width: 100%;
+      height: 1.5rem;
     &::placeholder {
       color: #292929;
     }

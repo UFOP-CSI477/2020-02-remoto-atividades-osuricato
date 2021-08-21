@@ -91,7 +91,7 @@ const Categories: React.FC = () => {
 
       if (alert) {
         await api.delete(`/categories/${id}`);
-        const updateCategories = categories.filter(user => user.id !== id);
+        const updateCategories = categories.filter(category => category.id !== id);
 
         deleteSuccess();
         setCategories(updateCategories);

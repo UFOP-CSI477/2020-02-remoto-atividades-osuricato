@@ -49,7 +49,7 @@ class UpdateUserService {
 
     delete userUpdate.password;
 
-    return user;
+    return userUpdate;
   }
 }
 

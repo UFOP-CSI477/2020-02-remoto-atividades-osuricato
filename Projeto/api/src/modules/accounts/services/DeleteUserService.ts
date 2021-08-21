@@ -17,8 +17,6 @@ class DeleteUserService {
       throw new AppError("User not exist!");
     }
 
-    console.log(user)
-
     await this.usersRepository.delete(user);
   }
 }

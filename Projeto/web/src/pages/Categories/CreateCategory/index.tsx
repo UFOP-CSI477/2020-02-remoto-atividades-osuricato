@@ -1,12 +1,12 @@
 
-import React, {useRef, useCallback} from 'react';
+import * as Yup from 'yup';
 import Swal from 'sweetalert2';
+import React, {useRef, useCallback} from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 import { Link, useHistory } from 'react-router-dom'
-import { FiArrowLeft, FiUser, FiMail, FiLock, FiTrello } from "react-icons/fi";
-import * as Yup from 'yup';
+import { FiArrowLeft, FiDisc, FiFileText } from "react-icons/fi";
 
 import api from '../../../services/api'
 
@@ -29,23 +29,21 @@ import {
 
 interface UserFormData {
   name: string;
-  email: string;
-  password: string;
-  driver_license: string;
+  description: string;
 }
 
-const CreateUser: React.FC = () => {
+const CreateCategory: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const history = useHistory();
 
-  function createUserSuccess() {
-    toast.success('Usuário criado com sucesso!');
+  function createSuccess() {
+    toast.success('Categoria criada com sucesso!');
   }
 
-  function createUserError() {
+  function createError() {
     Swal.fire(
       'Erro!',
-      'Ocorreu um erro ao criar o usuário, verifique os dados e tente novamente.',
+      'Ocorreu um erro ao criar a categoria, verifique os dados e tente novamente.',
       'error',
     );
   }
@@ -57,26 +55,22 @@ const CreateUser: React.FC = () => {
 
         const schema = Yup.object().shape({
           name: Yup.string().required('Nome obrigatório.'),
-          email: Yup.string().required('Email obrigatório.'),
-          password: Yup.string().required('Senha obrigatória.'),
-          driver_license: Yup.string().required('Carteira de motorista obrigatória.'),
+          description: Yup.string().required('Descrição obrigatória.'),
         });
 
         await schema.validate(data, {
           abortEarly: false,
         });
 
-        await api.post('users', {
+        await api.post('categories', {
           name: data.name,
-          email: data.email,
-          password: data.password,
-          driver_license: data.driver_license
+          description: data.description,
         })
 
-        createUserSuccess();
-        history.push('/users');
+        createSuccess();
+        history.push('/categories');
       } catch (error) {
-        createUserError();
+        createError();
       }
     },
     [history],
@@ -91,7 +85,7 @@ const CreateUser: React.FC = () => {
 
         <BackButtonTitleContainer>
           <BackButton>
-            <Link to="/users">
+            <Link to="/categories">
               <span>
                 <FiArrowLeft
                   size={25}
@@ -101,7 +95,7 @@ const CreateUser: React.FC = () => {
             </Link>
           </BackButton>
           <TitleContainer>
-            <Title>Criar usuário</Title>
+            <Title>Criar categoria</Title>
           </TitleContainer>
         </BackButtonTitleContainer>
         
@@ -111,37 +105,19 @@ const CreateUser: React.FC = () => {
             <InputsContainer>
               <InputForm
                 name="name"
-                icon={FiUser}
+                icon={FiDisc}
                 required={true}
                 labelName="Nome"
                 placeholder="Nome"
               />
 
               <InputForm
-                name="email"
-                type="email"
-                icon={FiMail}
-                required={true}
-                labelName="Email"
-                placeholder="Email"
-              />
-                
-              <InputForm
-                name="password"
-                type="password"
-                icon={FiLock}
-                required={true}
-                labelName="Senha"
-                placeholder="Senha"
-              />
-
-              <InputForm
-                name="driver_license"
+                name="description"
                 type="text"
-                icon={FiTrello}
+                icon={FiFileText}
                 required={true}
-                labelName="Nº carteira de motorista"
-                placeholder="Nº carteira de motorista"
+                labelName="Descrição"
+                placeholder="Descrição"
               />
 
               <ButtonContainer>
@@ -156,4 +132,4 @@ const CreateUser: React.FC = () => {
   );
 }
 
-export default CreateUser
+export default CreateCategory

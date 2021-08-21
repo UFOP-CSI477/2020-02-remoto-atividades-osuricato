@@ -9,7 +9,8 @@ import {
   ButtonsContainer,
   Buttons,
   IconLink,
-  DivUsers
+  DivUsers,
+  DivCategories
 } from './styles';
 import { useAuth } from '../../hooks/auth';
 
@@ -26,6 +27,11 @@ const SideMenu: React.FC = () => {
   const handleRedirectToUsers = useCallback(() => {
     handleChangeActivatedMenu('users');
     history.push('/users');
+  }, [history, handleChangeActivatedMenu]);
+
+  const handleRedirectToCategories = useCallback(() => {
+    handleChangeActivatedMenu('categories');
+    history.push('/categories');
   }, [history, handleChangeActivatedMenu]);
 
   return (
@@ -68,6 +74,24 @@ const SideMenu: React.FC = () => {
                   </Link>
                 </div>
               </DivUsers>
+            ) : (
+              ''
+            )}
+
+            {user.isAdmin ? (
+              <DivCategories>
+                <div>
+                  <Link to="/categories">
+                    <button
+                      className="categories"
+                      type="button"
+                      onClick={handleRedirectToCategories}
+                    >
+                      Categorias
+                    </button>
+                  </Link>
+                </div>
+              </DivCategories>
             ) : (
               ''
             )}

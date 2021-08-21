@@ -11,6 +11,9 @@ import Users from '../pages/Users';
 import CreateUser from '../pages/Users/CreateUser';
 import EditUser from '../pages/Users/EditUser';
 
+import Categories from '../pages/Categories';
+import CreateCategory from '../pages/Categories/CreateCategory';
+
 const Routes: React.FC = () => {
   return (
     <BrowserRouter>
@@ -22,6 +25,10 @@ const Routes: React.FC = () => {
         <Route path="/users" exact component={Users} isPrivate />
         <Route path="/users/create-user" exact component={CreateUser} isPrivate />
         <Route path="/users/edit-user" exact component={EditUser} isPrivate />
+
+        <Route path="/categories" exact component={Categories} isPrivate />
+        <Route path="/categories/create-category" exact component={CreateCategory} isPrivate />
+
       </Switch>
     </BrowserRouter>
   );

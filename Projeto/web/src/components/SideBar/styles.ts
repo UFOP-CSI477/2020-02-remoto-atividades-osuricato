@@ -87,6 +87,11 @@ export const Buttons = styled.div<SideButtonProps>`
     box-shadow: ${props =>
       props.activatedMenu === 'users' ? 'inset -3px 0px 0px #DC1637' : ''};
   }
+
+  .categories {
+    box-shadow: ${props =>
+      props.activatedMenu === 'categories' ? 'inset -3px 0px 0px #DC1637' : ''};
+  }
 `
 
 export const Icon = styled.div`
@@ -117,6 +122,12 @@ export const IconLink = styled.div`
 `;
 
 export const DivUsers = styled.div`
+  .menu-content {
+    display: block;
+  }
+`;
+
+export const DivCategories = styled.div`
   .menu-content {
     display: block;
   }

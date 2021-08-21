@@ -14,21 +14,13 @@ export const ContainerHeader = styled.div`
   justify-content: space-between;
 `;
 
-export const ContainerButton = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 22rem;
-
-  background: #d8d8d8;
-
-  border: none;
-  border-radius: 0.75rem;
-`;
-
 export const SearchContainer = styled.div`
   display: flex;
   align-items: center;
   width: 22rem;
+
+  background: #d8d8d8;
+  border-radius: 0.75rem;
 
   input {
     width: 90%;
@@ -43,7 +35,7 @@ export const SearchContainer = styled.div`
   }
 `;
 
-export const ButtonNewUser = styled.button`
+export const ButtonNew = styled.button`
   width: 8rem;
   height: 2rem;
   color: #ffffff;

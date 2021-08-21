@@ -64,18 +64,13 @@ export const ButtonsContainer = styled.div`
 export const Buttons = styled.div<SideButtonProps>`
   padding: 0 0 10px 0;
 
-  .menu-content-disabled {
-    display: none;
-    li {
-      list-style-type: none;
-    }
+  button {
+    display: flex;
+    justify-content: space-between;
   }
 
-  .menu-content {
-    display: block;
-    li {
-      list-style-type: none;
-    }
+  svg {
+    color: #fff;
   }
 
   .dashboard {
@@ -92,6 +87,11 @@ export const Buttons = styled.div<SideButtonProps>`
     box-shadow: ${props =>
       props.activatedMenu === 'categories' ? 'inset -3px 0px 0px #DC1637' : ''};
   }
+
+  .cars {
+    box-shadow: ${props =>
+      props.activatedMenu === 'cars' ? 'inset -3px 0px 0px #DC1637' : ''};
+  }
 `
 
 export const Icon = styled.div`
@@ -104,31 +104,9 @@ export const Icon = styled.div`
 `;
 
 export const IconLink = styled.div`
-  img {
-    transition: color 0.4s;
-    height: 1.5rem;
-    width: 1.5rem;
-    margin: 0 0.425rem;
-    color: #041524;
-  }
-
   svg {
-    transition: color 0.4s;
     height: 1.3rem;
     width: 1.3rem;
-    margin: 0 0.425rem;
-    color: #041524;
-  }
-`;
-
-export const DivUsers = styled.div`
-  .menu-content {
-    display: block;
-  }
-`;
-
-export const DivCategories = styled.div`
-  .menu-content {
-    display: block;
+    margin-right: 1rem;
   }
 `;

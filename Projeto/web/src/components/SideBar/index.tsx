@@ -1,16 +1,19 @@
 import React, { useCallback } from 'react';
 
 import { Link, useHistory } from 'react-router-dom';
-
 import { useSignMenu } from '../../hooks/toggle';
+import {
+  FaHome,
+  FaUsers,
+  FaTh,
+  FaCarAlt
+} from "react-icons/fa";
 
 import {
   SideMenuContainer,
   ButtonsContainer,
   Buttons,
   IconLink,
-  DivUsers,
-  DivCategories
 } from './styles';
 import { useAuth } from '../../hooks/auth';
 
@@ -34,6 +37,11 @@ const SideMenu: React.FC = () => {
     history.push('/categories');
   }, [history, handleChangeActivatedMenu]);
 
+  const handleRedirectToCars = useCallback(() => {
+    handleChangeActivatedMenu('cars');
+    history.push('/cars');
+  }, [history, handleChangeActivatedMenu]);
+
   return (
     <>
       <SideMenuContainer>
@@ -45,56 +53,65 @@ const SideMenu: React.FC = () => {
                 type="button"
                 onClick={handleRedirectToDashboard}
               >
-                <IconLink>
-                  {/* <img src={dahsboardIcon} alt="Página inicial" /> */}
-                </IconLink>
                 Página inicial
+                <IconLink>
+                  <FaHome color="#fff" />
+                </IconLink>
               </button>
             </Link>
 
             {user.isAdmin ? (
-              <DivUsers>
-                <div>
-                  <Link to="/users">
-                    <button
-                      className="users"
-                      type="button"
-                      onClick={handleRedirectToUsers}
-                    >
-                      <IconLink>
-                        {/* <img src={ProcessamentoIcon} alt="Processamento" /> */}
-                      </IconLink>
-                      Usuários
-                      <main>
-                        {/* <Icon>
-                            <IoIosArrowDown />
-                          </Icon> */}
-                      </main>
-                    </button>
-                  </Link>
-                </div>
-              </DivUsers>
+              <div>
+                <Link to="/users">
+                  <button
+                    className="users"
+                    type="button"
+                    onClick={handleRedirectToUsers}
+                  >
+                    Usuários
+                    <IconLink>
+                      <FaUsers color="#fff" />
+                    </IconLink>
+                  </button>
+                </Link>
+              </div>
             ) : (
               ''
             )}
 
             {user.isAdmin ? (
-              <DivCategories>
-                <div>
-                  <Link to="/categories">
-                    <button
-                      className="categories"
-                      type="button"
-                      onClick={handleRedirectToCategories}
-                    >
-                      Categorias
-                    </button>
-                  </Link>
-                </div>
-              </DivCategories>
+              <div>
+                <Link to="/categories">
+                  <button
+                    className="categories"
+                    type="button"
+                    onClick={handleRedirectToCategories}
+                  >
+                    Categorias
+                    <IconLink>
+                      <FaTh color="#fff" />
+                    </IconLink>
+                  </button>
+                </Link>
+              </div>
             ) : (
               ''
             )}
+
+            <div>
+              <Link to="/cars">
+                <button
+                  className="cars"
+                  type="button"
+                  onClick={handleRedirectToCars}
+                >
+                  Carros
+                  <IconLink>
+                    <FaCarAlt color="#fff" />
+                  </IconLink>
+                </button>
+              </Link>
+            </div>
           </Buttons>
         </ButtonsContainer>
       </SideMenuContainer>

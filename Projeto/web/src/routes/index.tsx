@@ -15,6 +15,8 @@ import Categories from '../pages/Categories';
 import CreateCategory from '../pages/Categories/CreateCategory';
 import EditCategory from '../pages/Categories/EditCategory';
 
+import Cars from '../pages/Cars';
+
 const Routes: React.FC = () => {
   return (
     <BrowserRouter>
@@ -31,6 +33,7 @@ const Routes: React.FC = () => {
         <Route path="/categories/create-category" exact component={CreateCategory} isPrivate />
         <Route path="/categories/edit-category" exact component={EditCategory} isPrivate />
 
+        <Route path="/cars" exact component={Cars} isPrivate />
       </Switch>
     </BrowserRouter>
   );

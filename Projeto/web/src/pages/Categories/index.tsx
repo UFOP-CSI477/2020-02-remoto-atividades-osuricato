@@ -1,6 +1,5 @@
 import Swal from 'sweetalert2';
 import toast, { Toaster } from 'react-hot-toast';
-import { Form } from '@unform/web';
 import React, {
   useCallback,
   useEffect,
@@ -22,7 +21,6 @@ import { Title } from '../../components/Styles/Title';
 import {
   Container,
   ContainerHeader,
-  ContainerButton,
   SearchContainer,
   ButtonNew,
   TableContainer,
@@ -71,12 +69,6 @@ const Categories: React.FC = () => {
     [getCategories, searchCategories],
   );
 
-  const handleSubmit = useCallback(() => {
-    api.get('/categories').then(response => {
-      setCategories(response.data);
-    });
-  }, []);
-
   function deleteSuccess() {
     toast.success('Categoria deletada com sucesso');
   }
@@ -111,18 +103,13 @@ const Categories: React.FC = () => {
         <Toaster position="top-right" reverseOrder={false} />
         <Title>Categorias</Title>
         <ContainerHeader>
-
-          <ContainerButton>
-            <Form onSubmit={handleSubmit}>
-              <SearchContainer>
-                <input
-                  placeholder="Pesquise por uma categoria"
-                  onChange={handleSearchInputChange}
-                />
-                <AiOutlineSearch />
-              </SearchContainer>
-            </Form>
-          </ContainerButton>
+          <SearchContainer>
+            <input
+              placeholder="Pesquise por uma categoria"
+              onChange={handleSearchInputChange}
+            />
+            <AiOutlineSearch />
+          </SearchContainer>
 
           <Link to="categories/create-category">
             <ButtonNew type="submit">Nova categoria</ButtonNew>

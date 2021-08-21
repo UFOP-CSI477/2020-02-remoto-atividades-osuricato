@@ -1,6 +1,5 @@
 import Swal from 'sweetalert2';
 import toast, { Toaster } from 'react-hot-toast';
-import { Form } from '@unform/web';
 import React, {
   useCallback,
   useEffect,
@@ -22,9 +21,8 @@ import { Title } from '../../components/Styles/Title';
 import {
   Container,
   ContainerHeader,
-  ContainerButton,
   SearchContainer,
-  ButtonNewUser,
+  ButtonNew,
   TableContainer,
   Thead,
   Tbody,
@@ -72,12 +70,6 @@ const Users: React.FC = () => {
     [getUsers, searchUsers],
   );
 
-  const handleSubmit = useCallback(() => {
-    api.get(`/users`).then(response => {
-      setUsers(response.data);
-    });
-  }, []);
-
   function deleteSuccess() {
     toast.success('Usuário deletado com sucesso');
   }
@@ -113,20 +105,16 @@ const Users: React.FC = () => {
         <Title>Usuários</Title>
         <ContainerHeader>
 
-          <ContainerButton>
-            <Form onSubmit={handleSubmit}>
-              <SearchContainer>
-                <input
-                  placeholder="Pesquise por um usuário"
-                  onChange={handleSearchInputChange}
-                />
-                <AiOutlineSearch />
-              </SearchContainer>
-            </Form>
-          </ContainerButton>
+          <SearchContainer>
+            <input
+              placeholder="Pesquise por um usuário"
+              onChange={handleSearchInputChange}
+            />
+            <AiOutlineSearch />
+          </SearchContainer>
 
           <Link to="users/create-user">
-            <ButtonNewUser type="submit">Novo usuário</ButtonNewUser>
+            <ButtonNew type="submit">Novo usuário</ButtonNew>
           </Link>
         </ContainerHeader>
 

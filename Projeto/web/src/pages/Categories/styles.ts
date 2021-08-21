@@ -14,21 +14,13 @@ export const ContainerHeader = styled.div`
   justify-content: space-between;
 `;
 
-export const ContainerButton = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 22rem;
-
-  background: #d8d8d8;
-
-  border: none;
-  border-radius: 0.75rem;
-`;
-
 export const SearchContainer = styled.div`
   display: flex;
   align-items: center;
   width: 22rem;
+
+  background: #d8d8d8;
+  border-radius: 0.75rem;
 
   input {
     width: 90%;

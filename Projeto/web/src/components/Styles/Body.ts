@@ -5,7 +5,7 @@ export const Body = styled.div`
   height: 11.25rem;
   margin: auto;
   margin-top: 3.5rem;
-  margin-left: 15%;
+  padding-left: 10%;
 
   font-family: 'Poppins', sans-serif;
   font-weight: 500;

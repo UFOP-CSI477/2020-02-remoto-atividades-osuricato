@@ -1,11 +1,11 @@
 
-import React, { useRef, useCallback, useState } from 'react';
+import React, { useRef, useCallback } from 'react';
 import Swal from 'sweetalert2';
 import toast, { Toaster } from 'react-hot-toast';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 import { Link, useHistory, useLocation } from 'react-router-dom'
-import { FiArrowLeft, FiUser, FiMail, FiLock } from "react-icons/fi";
+import { FiArrowLeft, FiDisc, FiFileText } from "react-icons/fi";
 import * as Yup from 'yup';
 
 import api from '../../../services/api'
@@ -27,80 +27,62 @@ import {
   ButtonContainer,
 } from './styles';
 
-interface UserFormData {
+interface CategoryFormData {
   name: string;
-  email: string;
-  password: string;
-  isAdmin: boolean;
-  driver_license: string;
+  description: string;
 }
 
-interface User {
+interface Category {
   id: string;
   name: string;
-  email: string;
-  password: string;
-  isAdmin: boolean;
-  driver_license: string;
+  description: string
 }
 
-const EditUser: React.FC = () => {
+const EditCategory: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const history = useHistory();
 
-  const [admin, setAdmin] = useState()
-
   const location = useLocation();
-  const user = location.state as User;
+  const category = location.state as Category;
 
-  function editUserSuccess() {
-    toast.success('Usuário editado com sucesso!');
+  function editSuccess() {
+    toast.success('Categoria editada com sucesso!');
   }
 
-  function editUserError() {
+  function editError() {
     Swal.fire(
       'Erro!',
-      'Ocorreu um erro ao editar o usuário, verifique os dados e tente novamente.',
+      'Ocorreu um erro ao editar a categoria, verifique os dados e tente novamente.',
       'error',
     );
   }
 
-  function handleChangeAdmin(event: any): void {
-    const isAdmin = event.target.checked;
-    setAdmin(isAdmin);
-  }
-
   const handleSubmit = useCallback(
-    async (data: UserFormData) => {
+    async (data: CategoryFormData) => {
       try {
         formRef.current?.setErrors({});
 
         const schema = Yup.object().shape({
           name: Yup.string().required('Nome obrigatório.'),
-          email: Yup.string().required('Email obrigatório.'),
-          password: Yup.string().required('Senha obrigatória.'),
-          driver_license: Yup.string().required('Carteira de motorista obrigatória.'),
+          description: Yup.string().required('Categoria obrigatória.'),
         });
 
         await schema.validate(data, {
           abortEarly: false,
         });
 
-        await api.put(`users/${user.id}`, {
+        await api.put(`categories/${category.id}`, {
           name: data.name,
-          email: data.email,
-          password: data.password,
-          isAdmin: admin,
-          driver_license: data.driver_license
+          description: data.description
         })
 
-        editUserSuccess();
-        history.push('/users');
+        editSuccess();
+        history.push('/categories');
       } catch (error) {
-        editUserError();
+        editError();
       }
     },
-    [history, user, admin],
+    [history, category],
   );
 
   return (
@@ -112,7 +94,7 @@ const EditUser: React.FC = () => {
 
         <BackButtonTitleContainer>
           <BackButton>
-            <Link to="/users">
+            <Link to="/categories">
               <span>
                 <FiArrowLeft
                   size={25}
@@ -122,7 +104,7 @@ const EditUser: React.FC = () => {
             </Link>
           </BackButton>
           <TitleContainer>
-            <Title>Editar usuário</Title>
+            <Title>Editar categoria</Title>
           </TitleContainer>
         </BackButtonTitleContainer>
         
@@ -131,48 +113,21 @@ const EditUser: React.FC = () => {
             <InputsContainer>
               <InputForm
                 name="name"
-                icon={FiUser}
+                icon={FiDisc}
                 required={true}
                 labelName="Nome"
                 placeholder="Nome"
               />
 
               <InputForm
-                name="email"
-                type="email"
-                icon={FiMail}
+                name="description"
+                type="text"
+                icon={FiFileText}
                 required={true}
-                labelName="Email"
-                placeholder="Email"
+                labelName="Descrição"
+                placeholder="Descrição"
               />
                 
-              <InputForm
-                name="password"
-                type="password"
-                icon={FiLock}
-                required={true}
-                labelName="Senha"
-                placeholder="Senha"
-              />
-
-              <InputForm
-                name="driver_license"
-                type="text"
-                icon={FiLock}
-                required={true}
-                labelName="Nº carteira de motorista"
-                placeholder="Nº carteira de motorista"
-              />
-
-              <div className="checkbox">
-                <label htmlFor="isAdmin">Tornar usuário administrador</label>
-                <input
-                  type="checkbox"
-                  name="isAdmin"
-                  onChange={handleChangeAdmin}
-                />
-              </div>
-              
               <ButtonContainer>
                 <Button type="submit">Editar</Button>
               </ButtonContainer>
@@ -185,4 +140,4 @@ const EditUser: React.FC = () => {
   );
 }
 
-export default EditUser
+export default EditCategory

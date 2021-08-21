@@ -13,6 +13,7 @@ import EditUser from '../pages/Users/EditUser';
 
 import Categories from '../pages/Categories';
 import CreateCategory from '../pages/Categories/CreateCategory';
+import EditCategory from '../pages/Categories/EditCategory';
 
 const Routes: React.FC = () => {
   return (
@@ -28,6 +29,7 @@ const Routes: React.FC = () => {
 
         <Route path="/categories" exact component={Categories} isPrivate />
         <Route path="/categories/create-category" exact component={CreateCategory} isPrivate />
+        <Route path="/categories/edit-category" exact component={EditCategory} isPrivate />
 
       </Switch>
     </BrowserRouter>

@@ -119,7 +119,7 @@ const Rentals: React.FC = () => {
                   type="button"
                   onClick={() => devolutionRental(rental.id)}
                 >
-                  Realizar devolução
+                  Devolução
                 </ButtonDetails>
               </CarContainer>
             ))

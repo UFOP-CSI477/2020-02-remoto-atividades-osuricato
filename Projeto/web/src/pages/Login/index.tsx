@@ -95,12 +95,12 @@ export function Login() {
               icon={AiOutlineLock}
             />
 
-            <div className="recuperation">
+            {/* <div className="recuperation">
               <Link to="/login/reset-password">
                 <span>Esqueceu a senha?</span>
                 <span className="error-password">{error}</span>
               </Link>
-            </div>
+            </div> */}
 
             <FormButton>
               <Button type="submit">

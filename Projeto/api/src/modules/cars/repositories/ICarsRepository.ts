@@ -12,6 +12,7 @@ interface ICarsRepository {
   findById(id: string): Promise<Car>;
   updateAvailable(id: string, available: boolean): Promise<void>;
   delete(car: Car): Promise<void>;
+  save(car: Car): Promise<Car>;
 }
 
 export { ICarsRepository };

@@ -17,6 +17,8 @@ import EditCategory from '../pages/Categories/EditCategory';
 
 import Cars from '../pages/Cars';
 import Details from '../pages/Cars/Details';
+import CreateCar from '../pages/Cars/CreateCar';
+import EditCar from '../pages/Cars/EditCar';
 
 const Routes: React.FC = () => {
   return (
@@ -36,6 +38,8 @@ const Routes: React.FC = () => {
 
         <Route path="/cars" exact component={Cars} isPrivate />
         <Route path="/cars/details" exact component={Details} isPrivate />
+        <Route path="/cars/create-car" exact component={CreateCar} isPrivate />
+        <Route path="/cars/edit-car" exact component={EditCar} isPrivate />
       </Switch>
     </BrowserRouter>
   );

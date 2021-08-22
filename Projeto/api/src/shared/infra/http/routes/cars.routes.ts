@@ -5,6 +5,7 @@ import uploadConfig from "@config/upload";
 
 import { CreateCarController } from "@modules/cars/infra/controllers/CreateCarController";
 import { ListAvailableCarsController } from "@modules/cars/infra/controllers/ListAvailableCarsController";
+import { UpdateCarController } from "@modules/cars/infra/controllers/UpdateCarController";
 import { CreateCarSpecificationController } from "@modules/cars/infra/controllers/CreateCarSpecificationController";
 import { UploadCarImagesController } from "@modules/cars/infra/controllers/UploadCarImagesController";
 import { DeleteCarController } from "@modules/cars/infra/controllers/DeleteCarController";
@@ -16,6 +17,7 @@ const carsRoutes = Router();
 
 const createCarController = new CreateCarController();
 const listAvaialableCarsController = new ListAvailableCarsController();
+const updateCarController = new UpdateCarController();
 const createCarSpecificationController = new CreateCarSpecificationController();
 const uploadCarImagesController = new UploadCarImagesController();
 const deleteCarController = new DeleteCarController();
@@ -27,6 +29,13 @@ carsRoutes.post(
   ensureAuthenticated,
   ensureAdmin,
   createCarController.handle
+);
+
+carsRoutes.put(
+  "/:id",
+  ensureAuthenticated,
+  ensureAdmin,
+  updateCarController.handle
 );
 
 carsRoutes.delete(

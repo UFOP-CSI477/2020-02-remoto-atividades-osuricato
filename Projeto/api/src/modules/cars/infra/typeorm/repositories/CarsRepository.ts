@@ -92,6 +92,10 @@ class CarsRepository implements ICarsRepository {
   async delete(car: Car): Promise<void> {
     await this.repository.remove(car);
   }
+
+  async save(car: Car): Promise<Car> {
+    return this.repository.save(car);
+  }
 }
 
 export { CarsRepository };

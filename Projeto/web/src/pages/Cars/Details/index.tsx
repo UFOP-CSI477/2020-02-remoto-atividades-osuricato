@@ -158,7 +158,7 @@ const DetailsCar: React.FC = () => {
               <ButtonsContainer>
                 <Link
                   to={{
-                    pathname: 'users/edit-car',
+                    pathname: '../cars/edit-car',
                     state: {
                       id: car.id,
                       name: car.name,

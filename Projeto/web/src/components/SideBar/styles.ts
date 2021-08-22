@@ -92,6 +92,11 @@ export const Buttons = styled.div<SideButtonProps>`
     box-shadow: ${props =>
       props.activatedMenu === 'cars' ? 'inset -3px 0px 0px #DC1637' : ''};
   }
+
+  .rentals {
+    box-shadow: ${props =>
+      props.activatedMenu === 'rentals' ? 'inset -3px 0px 0px #DC1637' : ''};
+  }
 `
 
 export const Icon = styled.div`

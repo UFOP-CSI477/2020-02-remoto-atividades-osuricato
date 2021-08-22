@@ -6,7 +6,8 @@ import {
   FaHome,
   FaUsers,
   FaTh,
-  FaCarAlt
+  FaCarAlt,
+  FaCalendarCheck
 } from "react-icons/fa";
 
 import {
@@ -40,6 +41,11 @@ const SideMenu: React.FC = () => {
   const handleRedirectToCars = useCallback(() => {
     handleChangeActivatedMenu('cars');
     history.push('/cars');
+  }, [history, handleChangeActivatedMenu]);
+
+  const handleRedirectToRentals = useCallback(() => {
+    handleChangeActivatedMenu('rentals');
+    history.push('/rentals');
   }, [history, handleChangeActivatedMenu]);
 
   return (
@@ -108,6 +114,21 @@ const SideMenu: React.FC = () => {
                   Carros
                   <IconLink>
                     <FaCarAlt color="#fff" />
+                  </IconLink>
+                </button>
+              </Link>
+            </div>
+
+            <div>
+              <Link to="/rentals">
+                <button
+                  className="rentals"
+                  type="button"
+                  onClick={handleRedirectToRentals}
+                >
+                  Aluguéis
+                  <IconLink>
+                    <FaCalendarCheck color="#fff" />
                   </IconLink>
                 </button>
               </Link>

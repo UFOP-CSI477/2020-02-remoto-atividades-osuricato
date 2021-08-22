@@ -20,6 +20,8 @@ import Details from '../pages/Cars/Details';
 import CreateCar from '../pages/Cars/CreateCar';
 import EditCar from '../pages/Cars/EditCar';
 
+import Rentals from '../pages/Rentals';
+
 const Routes: React.FC = () => {
   return (
     <BrowserRouter>
@@ -40,6 +42,8 @@ const Routes: React.FC = () => {
         <Route path="/cars/details" exact component={Details} isPrivate />
         <Route path="/cars/create-car" exact component={CreateCar} isPrivate />
         <Route path="/cars/edit-car" exact component={EditCar} isPrivate />
+
+        <Route path="/rentals" exact component={Rentals} isPrivate />
       </Switch>
     </BrowserRouter>
   );

@@ -100,8 +100,6 @@ const EditCar: React.FC = () => {
         await schema.validate(data, {
           abortEarly: false,
         });
-
-        console.log(car.id)
         
         await api.put(`cars/${car.id}`, {
           name: data.name,

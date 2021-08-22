@@ -26,7 +26,15 @@ const Header: React.FC = () => {
         </Link>
       </Logo>
       <ContentContainer>
-        <Link to="/profile">
+        <Link 
+          to={{
+            pathname: 'users/edit-user',
+            state: {
+              id: user.id,
+              name: user.name,
+            },
+          }}
+        >
           <Profile>
             <span>{user.name}</span>
             {/* <img src={user.avatar_url} alt="User Avatar" /> */}

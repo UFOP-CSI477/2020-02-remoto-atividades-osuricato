@@ -31,7 +31,6 @@ class DevolutionRentalService {
       throw new AppError("Rental does not exists!");
     }
 
-    // Verificar o tempo de aluguel
     const dateNow = this.dateProvider.dateNow();
 
     let daily = this.dateProvider.compareInDays(

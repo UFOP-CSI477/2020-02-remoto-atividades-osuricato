@@ -88,6 +88,10 @@ class CarsRepository implements ICarsRepository {
       .setParameters({ id })
       .execute();
   }
+
+  async delete(car: Car): Promise<void> {
+    await this.repository.remove(car);
+  }
 }
 
 export { CarsRepository };

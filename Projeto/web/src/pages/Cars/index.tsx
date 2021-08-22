@@ -23,13 +23,13 @@ import {
   TitleCar,
   PricePerDay,
   ImageCar,
-  // ButtonDetailsContainer,
   ButtonDetails
 } from './styles'
 
 interface Car {
   id: string;
   name: string;
+  description: string;
   daily_rate: number;
   license_plate: string;
   fine_amount: number;
@@ -72,43 +72,18 @@ const Cars: React.FC = () => {
     [getCars, searchCars],
   );
 
-  function deleteSuccess() {
-    toast.success('Carro deletado com sucesso');
-  }
-
-  function deleteError() {
-    Swal.fire('Erro!', 'Ocorreu um erro ao deletar o carro.', 'error');
-  }
-
-  async function deleteCar(id: string) {
-    try {
-      const alert = window.confirm("Deseja excluir o carro?")
-
-      if (alert) {
-        await api.delete(`/cars/${id}`);
-        const updateCars = cars.filter(car => car.id !== id);
-
-        deleteSuccess();
-        setCars(updateCars);
-      }
-
-    } catch (err) {
-      deleteError();
-      console.log(err);
-    }
-  }
-
   return (
     <Container>
       <SideBar />
       <Header />
       <Body>
         <Toaster position="top-right" reverseOrder={false} />
+
         <Title>Carros disponíveis</Title>
         <ContainerHeader>
           <SearchContainer>
             <input
-              placeholder="Pesquise por um usuário"
+              placeholder="Pesquise por um carro"
               onChange={handleSearchInputChange}
             />
             <AiOutlineSearch />
@@ -116,7 +91,7 @@ const Cars: React.FC = () => {
 
           {
             user.isAdmin ? (
-              <Link to="users/create-user">
+              <Link to="cars/create-car">
                 <ButtonNew type="submit">Novo carro</ButtonNew>
               </Link>
             ) : (
@@ -145,21 +120,25 @@ const Cars: React.FC = () => {
                   <img src={lambo} alt="Imagem do carro" />
                 </ImageCar>
 
-                {/* <ButtonDetailsContainer> */}
-                  <Link
-                    to={{
-                      pathname: 'cars/details',
-                      state: {
-                        id: car.id,
-                        name: car.name,
-                      },
-                    }}
-                  >
-                    <ButtonDetails>
-                      Ver detalhes
-                    </ButtonDetails>
-                  </Link>
-                {/* </ButtonDetailsContainer> */}
+                <Link
+                  to={{
+                    pathname: 'cars/details',
+                    state: {
+                      id: car.id,
+                      name: car.name,
+                      description: car.description,
+                      daily_rate: car.daily_rate,
+                      license_plate: car.license_plate,
+                      fine_amount: car.fine_amount,
+                      brand: car.brand,
+                      category_id: car.category_id
+                    },
+                  }}
+                >
+                  <ButtonDetails>
+                    Ver detalhes
+                  </ButtonDetails>
+                </Link>
               </CarContainer>
             ))
           }

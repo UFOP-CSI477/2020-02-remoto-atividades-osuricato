@@ -7,6 +7,7 @@ import { CreateCarController } from "@modules/cars/infra/controllers/CreateCarCo
 import { ListAvailableCarsController } from "@modules/cars/infra/controllers/ListAvailableCarsController";
 import { CreateCarSpecificationController } from "@modules/cars/infra/controllers/CreateCarSpecificationController";
 import { UploadCarImagesController } from "@modules/cars/infra/controllers/UploadCarImagesController";
+import { DeleteCarController } from "@modules/cars/infra/controllers/DeleteCarController";
 
 import { ensureAdmin } from "../middlewares/ensureAdmin";
 import { ensureAuthenticated } from "../middlewares/ensureAuthenticated";
@@ -17,6 +18,7 @@ const createCarController = new CreateCarController();
 const listAvaialableCarsController = new ListAvailableCarsController();
 const createCarSpecificationController = new CreateCarSpecificationController();
 const uploadCarImagesController = new UploadCarImagesController();
+const deleteCarController = new DeleteCarController();
 
 const upload = multer(uploadConfig);
 
@@ -25,6 +27,13 @@ carsRoutes.post(
   ensureAuthenticated,
   ensureAdmin,
   createCarController.handle
+);
+
+carsRoutes.delete(
+  "/:id",
+  ensureAuthenticated,
+  ensureAdmin,
+  deleteCarController.handle
 );
 
 carsRoutes.get("/available", listAvaialableCarsController.handle);

@@ -19,6 +19,7 @@ export const BackButtonTitleContainer = styled.div`
 export const BackButton = styled.div`
   width: 10%;
 `
+
 export const TitleContainer = styled.div`
   width: 85%;
 `

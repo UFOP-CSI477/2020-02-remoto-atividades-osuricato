@@ -26,6 +26,7 @@ import {
   InputsContainer,
   ButtonContainer,
 } from './styles';
+import { useAuth } from '../../../hooks/auth';
 
 interface UserFormData {
   name: string;
@@ -48,10 +49,12 @@ const EditUser: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const history = useHistory();
 
+  const { user } = useAuth()
+
   const [admin, setAdmin] = useState()
 
   const location = useLocation();
-  const user = location.state as User;
+  const userLocation = location.state as User;
 
   function editUserSuccess() {
     toast.success('Usuário editado com sucesso!');
@@ -86,7 +89,7 @@ const EditUser: React.FC = () => {
           abortEarly: false,
         });
 
-        await api.put(`users/${user.id}`, {
+        await api.put(`users/${userLocation.id}`, {
           name: data.name,
           email: data.email,
           password: data.password,
@@ -100,7 +103,7 @@ const EditUser: React.FC = () => {
         editUserError();
       }
     },
-    [history, user, admin],
+    [history, userLocation, admin],
   );
 
   return (
@@ -112,20 +115,31 @@ const EditUser: React.FC = () => {
 
         <BackButtonTitleContainer>
           <BackButton>
-            <Link to="/users">
-              <span>
-                <FiArrowLeft
-                  size={25}
-                  color={'#3D3D4D'}
-                />
-              </span>
-            </Link>
+            {user.isAdmin ? (
+              <Link to="/users">
+                <span>
+                  <FiArrowLeft
+                    size={25}
+                    color={'#3D3D4D'}
+                  />
+                </span>
+              </Link>
+            ) : (
+              <Link to="/dashboard">
+                <span>
+                  <FiArrowLeft
+                    size={25}
+                    color={'#3D3D4D'}
+                  />
+                </span>
+              </Link>
+            )}
           </BackButton>
           <TitleContainer>
             <Title>Editar usuário</Title>
           </TitleContainer>
         </BackButtonTitleContainer>
-        
+
         <FormContainer>
           <Form ref={formRef} onSubmit={handleSubmit}>
             <InputsContainer>
@@ -145,7 +159,7 @@ const EditUser: React.FC = () => {
                 labelName="Email"
                 placeholder="Email"
               />
-                
+
               <InputForm
                 name="password"
                 type="password"
@@ -163,16 +177,18 @@ const EditUser: React.FC = () => {
                 labelName="Nº carteira de motorista"
                 placeholder="Nº carteira de motorista"
               />
-
-              <div className="checkbox">
-                <label htmlFor="isAdmin">Tornar usuário administrador</label>
-                <input
-                  type="checkbox"
-                  name="isAdmin"
-                  onChange={handleChangeAdmin}
-                />
-              </div>
-              
+              {user.isAdmin ? (
+                <div className="checkbox">
+                  <label htmlFor="isAdmin">Tornar usuário administrador</label>
+                  <input
+                    type="checkbox"
+                    name="isAdmin"
+                    onChange={handleChangeAdmin}
+                  />
+                </div>
+              ) : (
+                ''
+              )}
               <ButtonContainer>
                 <Button type="submit">Editar</Button>
               </ButtonContainer>

@@ -11,13 +11,13 @@ class DeleteCategoryService {
   ) {}
 
   async execute(id: string): Promise<void> {
-    const user = await this.categoriesRepository.findById(id)
+    const category = await this.categoriesRepository.findById(id)
 
-    if (!user) {
-      throw new AppError("User not exist!");
+    if (!category) {
+      throw new AppError("Category not exist!");
     }
 
-    await this.categoriesRepository.delete(user);
+    await this.categoriesRepository.delete(category);
   }
 }
 

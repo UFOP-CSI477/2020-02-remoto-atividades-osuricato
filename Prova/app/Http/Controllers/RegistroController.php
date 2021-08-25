@@ -70,7 +70,12 @@ class RegistroController extends Controller
     $pessoas = Pessoa::orderBy('nome')->get();
     $unidades = Unidade::orderBy('nome')->get();
     $vacinas = Vacina::orderBy('nome')->get();
-    return view('registros.edit', ['pessoas' => $pessoas, 'unidades' => $unidades, 'vacinas' => $vacinas]);
+    return view('registros.edit', [
+      'registro' => $registro,
+      'pessoas' => $pessoas,
+      'unidades' => $unidades,
+      'vacinas' => $vacinas
+    ]);
   }
 
   /**

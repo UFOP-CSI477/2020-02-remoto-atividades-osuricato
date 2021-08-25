@@ -23,9 +23,7 @@
         <ul class="row">
           <li class="col"> <a class="navbar-brand" href="{{route('main')}}">Início</a> </li>
           <li class="col"> <a class="navbar-brand" href="">Área Geral</a> </li>
-
-
-          <li class="col"> <a class="navbar-brand" href="">Área Administrativa</a> </li>
+          <li class="col"> <a class="navbar-brand" href="{{route('admin')}}">Área Administrativa</a> </li>
         </ul>
       </div>
 

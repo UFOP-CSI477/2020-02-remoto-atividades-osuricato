@@ -13,7 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+use App\Http\Controllers\VacinaController;
+
 Route::get('/', function () {
   return view('main');
 })->name('main');
 
+Route::get('/admin', function () {
+  return view('admin');
+})->name('admin');
+
+Route::resource('/vacinas', VacinaController::class);

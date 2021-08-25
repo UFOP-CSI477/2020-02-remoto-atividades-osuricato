@@ -9,17 +9,17 @@
 
   <div class="form-group">
     <label for="nome">Nome</label>
-    <input type="text" class="form-control" name="nome" id="nome" value="{{ $vacina->nome }}">
+    <input type="text" class="form-control" name="nome" id="nome" value="{{ $vacina->nome }}" required>
   </div>
 
   <div class="form-group">
     <label for="fabricante">Fabricante</label>
-    <input type="text" class="form-control" name="fabricante" id="fabricante" value="{{ $vacina->fabricante }}">
+    <input type="text" class="form-control" name="fabricante" id="fabricante" value="{{ $vacina->fabricante }}" required>
   </div>
 
   <div class="form-group">
     <label for="doses">Doses</label>
-    <input type="number" class="form-control" name="doses" id="doses" value="{{ $vacina->doses }}">
+    <input type="number" class="form-control" name="doses" id="doses" value="{{ $vacina->doses }}" required>
   </div>
 
   <div class="form-group">

@@ -22,7 +22,7 @@
       <div class="col container-fluid d-flex justify-content-start">
         <ul class="row">
           <li class="col"> <a class="navbar-brand" href="{{route('main')}}">Início</a> </li>
-          <li class="col"> <a class="navbar-brand" href="">Área Geral</a> </li>
+          <li class="col"> <a class="navbar-brand" href="{{route('geral')}}">Área Geral</a> </li>
           <li class="col"> <a class="navbar-brand" href="{{route('admin')}}">Área Administrativa</a> </li>
         </ul>
       </div>
@@ -32,13 +32,13 @@
           @guest
           @if (Route::has('login'))
           <li class="col">
-            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+            <a class="nav-link" href="{{ route('login') }}">{{ __('Entrar') }}</a>
           </li>
           @endif
 
           @if (Route::has('register'))
           <li class="col">
-            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+            <a class="nav-link" href="{{ route('register') }}">{{ __('Registrar') }}</a>
           </li>
           @endif
           @else

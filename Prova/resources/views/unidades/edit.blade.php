@@ -9,17 +9,17 @@
 
   <div class="form-group">
     <label for="nome">Nome</label>
-    <input type="text" class="form-control" name="nome" id="nome" value="{{ $unidade->nome }}">
+    <input type="text" class="form-control" name="nome" id="nome" value="{{ $unidade->nome }}" required>
   </div>
 
   <div class="form-group">
     <label for="bairro">Bairro</label>
-    <input type="text" class="form-control" name="bairro" id="bairro" value="{{ $unidade->bairro }}">
+    <input type="text" class="form-control" name="bairro" id="bairro" value="{{ $unidade->bairro }}" required>
   </div>
 
   <div class="form-group">
     <label for="cidade">Cidade</label>
-    <input type="text" class="form-control" name="cidade" id="cidade" value="{{ $unidade->cidade }}">
+    <input type="text" class="form-control" name="cidade" id="cidade" value="{{ $unidade->cidade }}" required>
   </div>
 
   <div class="form-group">

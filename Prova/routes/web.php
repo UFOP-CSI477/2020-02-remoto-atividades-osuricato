@@ -22,11 +22,19 @@ Route::get('/', function () {
   return view('main');
 })->name('main');
 
+Route::get('/geral', function () {
+  return view('geral');
+})->name('geral');
+
 Route::get('/admin', function () {
   return view('admin');
-})->name('admin');
+})->name('admin')->middleware('auth');
 
 Route::resource('/vacinas', VacinaController::class);
 Route::resource('/pessoas', PessoaController::class);
 Route::resource('/unidades', UnidadeController::class);
 Route::resource('/registros', RegistroController::class);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

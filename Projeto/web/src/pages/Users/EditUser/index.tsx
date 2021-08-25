@@ -56,6 +56,8 @@ const EditUser: React.FC = () => {
   const location = useLocation();
   const userLocation = location.state as User;
 
+  console.log(userLocation)
+
   function editUserSuccess() {
     toast.success('Usuário editado com sucesso!');
   }
@@ -88,6 +90,8 @@ const EditUser: React.FC = () => {
         await schema.validate(data, {
           abortEarly: false,
         });
+
+        console.log(userLocation)
 
         await api.put(`users/${userLocation.id}`, {
           name: data.name,

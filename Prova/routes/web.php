@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 use App\Http\Controllers\VacinaController;
+use App\Http\Controllers\PessoaController;
 
 Route::get('/', function () {
   return view('main');
@@ -24,3 +25,4 @@ Route::get('/admin', function () {
 })->name('admin');
 
 Route::resource('/vacinas', VacinaController::class);
+Route::resource('/pessoas', PessoaController::class);

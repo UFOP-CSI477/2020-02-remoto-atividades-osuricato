@@ -76,7 +76,7 @@ class PessoaController extends Controller
     $pessoa->fill($request->all());
     $pessoa->save();
 
-    session()->flash('message', 'Usuário atualizado com sucesso!');
+    session()->flash('message', 'Pessoa atualizada com sucesso!');
     return redirect()->route('pessoas.index');
   }
 
@@ -89,7 +89,7 @@ class PessoaController extends Controller
   public function destroy(Pessoa $pessoa)
   {
     $pessoa->delete();
-    session()->flash('message', 'Usuário deletado com sucesso!');
+    session()->flash('message', 'Pessoa deletada com sucesso!');
     return redirect()->route('pessoas.index');
   }
 }

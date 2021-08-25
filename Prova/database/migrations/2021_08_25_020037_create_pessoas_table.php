@@ -18,7 +18,7 @@ class CreatePessoasTable extends Migration
       $table->string('nome', 100)->nullable(false);
       $table->string('bairro', 100)->nullable(false);
       $table->string('cidade', 100)->nullable(false);
-      $table->date('date_nascimento')->date_format('YYYY-MM-DD');
+      $table->date('data_nascimento')->date_format('YYYY-MM-DD');
       $table->timestamps();
     });
   }

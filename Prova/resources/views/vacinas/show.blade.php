@@ -17,7 +17,7 @@
   name="frmDelete"
   action="{{route('vacinas.destroy', $vacina->id)}}"
   method="post"
-  onsubmit="return confirm('Deseja excluir o usuário?')">
+  onsubmit="return confirm('Deseja excluir a vacina?')">
 
   @csrf
   @method('DELETE')

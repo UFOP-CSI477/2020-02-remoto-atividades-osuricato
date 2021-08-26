@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Model;
+use App\Models\Unidade;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class UnidadeFactory extends Factory
@@ -12,7 +12,7 @@ class UnidadeFactory extends Factory
    *
    * @var string
    */
-  protected $model = Model::class;
+  protected $model = Unidade::class;
 
   /**
    * Define the model's default state.
@@ -22,7 +22,9 @@ class UnidadeFactory extends Factory
   public function definition()
   {
     return [
-      //
+      'nome' => $this->faker->name(),
+      'bairro' => $this->faker->cityPrefix(),
+      'cidade' => $this->faker->city()
     ];
   }
 }

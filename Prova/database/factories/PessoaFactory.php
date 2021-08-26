@@ -12,7 +12,7 @@ class PessoaFactory extends Factory
    *
    * @var string
    */
-  protected $model = Model::class;
+  protected $model = Pessoa::class;
 
   /**
    * Define the model's default state.
@@ -22,7 +22,10 @@ class PessoaFactory extends Factory
   public function definition()
   {
     return [
-      //
+      'nome' => $this->faker->name(),
+      'bairro' => $this->faker->cityPrefix(),
+      'cidade' => $this->faker->city(),
+      'data_nascimento' => $this->faker->date('YYYY-MM-DD')
     ];
   }
 }

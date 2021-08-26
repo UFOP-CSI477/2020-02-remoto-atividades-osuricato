@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Model;
+use App\Models\Vacina;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class VacinaFactory extends Factory
@@ -12,7 +12,7 @@ class VacinaFactory extends Factory
    *
    * @var string
    */
-  protected $model = Model::class;
+  protected $model = Vacina::class;
 
   /**
    * Define the model's default state.
@@ -22,7 +22,9 @@ class VacinaFactory extends Factory
   public function definition()
   {
     return [
-      //
+      'nome' => ucfirst($this->faker->word()),
+      'fabricante' => $this->faker->company(),
+      'doses' => $this->faker->random_int(1, 3)
     ];
   }
 }

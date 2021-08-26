@@ -88,6 +88,11 @@ class PessoaController extends Controller
    */
   public function destroy(Pessoa $pessoa)
   {
+    if (count($pessoa->registros) > 0) {
+      session()->flash('message-failed', 'Existe(m) registro(s) dessa pessoa, portanto não pode ser deletada!');
+      return redirect()->route('pessoas.index');
+    }
+    
     $pessoa->delete();
     session()->flash('message', 'Pessoa deletada com sucesso!');
     return redirect()->route('pessoas.index');

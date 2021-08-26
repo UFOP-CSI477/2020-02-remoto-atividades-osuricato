@@ -88,6 +88,11 @@ class UnidadeController extends Controller
    */
   public function destroy(Unidade $unidade)
   {
+    if (count($unidade->registros) > 0) {
+      session()->flash('message-failed', 'Existe(m) registro(s) dessa unidade, portanto não pode ser deletada!');
+      return redirect()->route('unidades.index');
+    }
+
     $unidade->delete();
     session()->flash('message', 'Unidade deletada com sucesso!');
     return redirect()->route('unidades.index');

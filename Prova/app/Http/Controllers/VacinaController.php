@@ -88,6 +88,11 @@ class VacinaController extends Controller
    */
   public function destroy(Vacina $vacina)
   {
+    if (count($vacina->registros) > 0) {
+      session()->flash('message-failed', 'Existe(m) registro(s) dessa vacina, portanto não pode ser deletada!');
+      return redirect()->route('vacinas.index');
+    }
+
     $vacina->delete();
     session()->flash('message', 'Vacina deletada com sucesso!');
     return redirect()->route('vacinas.index');
